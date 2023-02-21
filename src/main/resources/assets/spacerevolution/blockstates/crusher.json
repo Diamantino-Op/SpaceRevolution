@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,machine_active=false": {
+      "model": "spacerevolution:block/crusher"
+    },
+    "facing=south,machine_active=false": {
+      "model": "spacerevolution:block/crusher",
+      "y": 180
+    },
+    "facing=west,machine_active=false": {
+      "model": "spacerevolution:block/crusher",
+      "y": 270
+    },
+    "facing=east,machine_active=false": {
+      "model": "spacerevolution:block/crusher",
+      "y": 90
+    },
+    "facing=north,machine_active=true": {
+      "model": "spacerevolution:block/crusher_on"
+    },
+    "facing=south,machine_active=true": {
+      "model": "spacerevolution:block/crusher_on",
+      "y": 180
+    },
+    "facing=west,machine_active=true": {
+      "model": "spacerevolution:block/crusher_on",
+      "y": 270
+    },
+    "facing=east,machine_active=true": {
+      "model": "spacerevolution:block/crusher_on",
+      "y": 90
+    }
+  }
+}

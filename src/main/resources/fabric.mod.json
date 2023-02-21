@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "spacerevolution",
+  "version": "${version}",
+  "name": "SpaceRevolution",
+  "description": "",
+  "authors": [
+    "Diamantino"
+  ],
+  "contact": {
+    "website": ""
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/spacerevolution/Icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.diamantino.spacerevolution.client.SpaceRevolutionClient"
+    ],
+    "main": [
+      "com.diamantino.spacerevolution.SpaceRevolution"
+    ]
+  },
+  "mixins": [
+    "SpaceRevolution.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.14",
+    "fabric": "*",
+    "minecraft": "1.19.3"
+  }
+}

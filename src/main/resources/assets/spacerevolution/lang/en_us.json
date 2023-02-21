@@ -1,0 +1,6 @@
+{
+  "block.spacerevolution.crusher": "Crusher",
+  "machine.spacerevolution.crusher.name": "Crusher",
+  "spacerevolution.tooltip.liquid.amount.with.capacity": "%s / %s mB",
+  "spacerevolution.tooltip.liquid.amount": "%s mB"
+}

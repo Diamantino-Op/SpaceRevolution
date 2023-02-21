@@ -1,0 +1,13 @@
+{
+  "type": "spacerevolution:crushing",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ore",
+      "count": 2
+    }
+  ],
+  "output": {
+    "item": "minecraft:iron_ingot",
+    "count": 4
+  }
+}
