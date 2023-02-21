@@ -60,6 +60,8 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements Exte
     int energySlot;
     int fluidSlot;
 
+    ItemStack outputStack;
+
     public BaseMachineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, String name, int inventorySize, int maxProgress, int outSlot, BaseRecipe.BaseType<?> recType, long energyCapacity, long maxInsert, long maxExtract, boolean acceptEnergy, boolean provideEnergy, long baseEnergyUsage, List<Direction> energyPorts, int energySlot, long lubricantCapacity, long baseLubricantUsage, int fluidSlot) {
         super(type, pos, state);
 
@@ -88,6 +90,8 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements Exte
                 }
             }
         };
+
+        outputStack = ItemStack.EMPTY;
 
         this.energySlot = energySlot;
         this.fluidSlot = fluidSlot;
@@ -214,6 +218,18 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements Exte
         }
     }
 
+    void sendOutputSyncPacket() {
+        PacketByteBuf data = PacketByteBufs.create();
+
+        data.writeItemStack(outputStack);
+        data.writeBlockPos(getPos());
+
+        assert world != null;
+        for (ServerPlayerEntity player : PlayerLookup.tracking((ServerWorld) world, getPos())) {
+            ServerPlayNetworking.send(player, ModMessages.outputStackSyncPacket, data);
+        }
+    }
+
     public void setEnergyLevel(long energyLevel) {
         this.energyStorage.amount = energyLevel;
     }
@@ -227,6 +243,10 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements Exte
         for (int i = 0; i < inventory.size(); i++) {
             this.inventory.set(i, inventory.get(i));
         }
+    }
+
+    public void setOutputStack(ItemStack stack) {
+        outputStack = stack;
     }
 
     //TODO: Modify with tiers
@@ -394,22 +414,18 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements Exte
 
         Optional<? extends BaseRecipe> match = Objects.requireNonNull(entity.getWorld()).getRecipeManager().getFirstMatch(recipeType, inventory, entity.getWorld());
 
-        return match.isPresent() && canInsertAmountIntoOutputSlot(inventory, match.get().getOutput().getCount()) && canInsertItemIntoOutputSlot(inventory, match.get().getOutput().getItem());
+        if (match.isPresent() && canInsertAmountIntoOutputSlot(inventory, match.get().getOutput().getCount()) && canInsertItemIntoOutputSlot(inventory, match.get().getOutput().getItem())) {
+            entity.outputStack = match.get().getOutput().copy();
+            entity.sendOutputSyncPacket();
+
+            return true;
+        }
+
+        return false;
     }
 
     public ItemStack getRenderStack() {
-        SimpleInventory inventory = new SimpleInventory(size());
-
-        for (int i = 0; i < size(); i++) {
-            inventory.setStack(i, getStack(i));
-        }
-
-        Optional<? extends BaseRecipe> match = Objects.requireNonNull(getWorld()).getRecipeManager().getFirstMatch(recipeType, inventory, getWorld());
-
-        if (match.isPresent())
-            return match.get().getOutput().copy();
-
-        return getStack(outputSlot);
+        return outputStack.isEmpty() ? getStack(outputSlot) : outputStack;
     }
 
     static boolean canInsertItemIntoOutputSlot(SimpleInventory inventory, Item output) {
@@ -430,6 +446,9 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements Exte
         Optional<? extends BaseRecipe> recipe = Objects.requireNonNull(entity.getWorld()).getRecipeManager().getFirstMatch(recipeType, inventory, entity.getWorld());
 
         if (hasRecipe(entity) && recipe.isPresent()) {
+            entity.outputStack = ItemStack.EMPTY;
+            entity.sendOutputSyncPacket();
+
             //TODO: IDK if it works
             for (int slot : inputSlots) {
                 //entity.removeStack(slot, recipe.get().getIngredients().get(slot).getMatchingStacks()[slot].getCount());
