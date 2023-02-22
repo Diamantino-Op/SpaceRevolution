@@ -123,6 +123,8 @@ public class CrusherBlockEntity extends BaseMachineBlockEntity {
                 world.setBlockState(blockPos, state, Block.NOTIFY_ALL);
             }
 
+            updateOutputStack(entity, ItemStack.EMPTY);
+
             markDirty(world, blockPos, state);
         }
     }

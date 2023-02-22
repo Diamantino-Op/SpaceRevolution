@@ -14,11 +14,14 @@
   "icon": "assets/spacerevolution/Icon.png",
   "environment": "*",
   "entrypoints": {
+    "main": [
+      "com.diamantino.spacerevolution.SpaceRevolution"
+    ],
     "client": [
       "com.diamantino.spacerevolution.client.SpaceRevolutionClient"
     ],
-    "main": [
-      "com.diamantino.spacerevolution.SpaceRevolution"
+    "fabric-datagen": [
+      "com.diamantino.spacerevolution.datagen.SpaceRevolutionDatagen"
     ]
   },
   "mixins": [

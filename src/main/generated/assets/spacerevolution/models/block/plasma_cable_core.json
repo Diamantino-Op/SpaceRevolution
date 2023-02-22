@@ -1,0 +1,6 @@
+{
+  "parent": "spacerevolution:block/cables/base_cable_core",
+  "textures": {
+    "cable": "spacerevolution:block/cables/plasma_cable"
+  }
+}

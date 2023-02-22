@@ -1,0 +1,6 @@
+{
+  "parent": "spacerevolution:block/cables/base_cable_side",
+  "textures": {
+    "cable": "spacerevolution:block/cables/insulated_copper_cable"
+  }
+}

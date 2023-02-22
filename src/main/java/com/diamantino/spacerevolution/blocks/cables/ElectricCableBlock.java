@@ -55,7 +55,7 @@ public class ElectricCableBlock extends BlockWithEntity implements Waterloggable
     public final CableVariants.Electric type;
 
     public ElectricCableBlock(CableVariants.Electric type) {
-        super(Block.Settings.of(Material.STONE).strength(1f, 8f));
+        super(Block.Settings.of(Material.METAL).strength(1f, 8f).nonOpaque());
         this.type = type;
         setDefaultState(this.getStateManager().getDefaultState().with(EAST, false).with(WEST, false).with(NORTH, false).with(SOUTH, false).with(UP, false).with(DOWN, false).with(WATERLOGGED, false).with(COVERED, false));
     }
@@ -64,6 +64,24 @@ public class ElectricCableBlock extends BlockWithEntity implements Waterloggable
     @Override
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
+    }
+
+    @Override
+    public boolean isTranslucent(BlockState state, BlockView world, BlockPos pos) {
+        return true;
+    }
+
+    @Override
+    public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
+        return 1.0f;
+    }
+
+    @Override
+    public boolean isSideInvisible(BlockState state, BlockState stateFrom, Direction direction) {
+        if (stateFrom.isOf(this)) {
+            return true;
+        }
+        return super.isSideInvisible(state, stateFrom, direction);
     }
 
     @Nullable
@@ -84,14 +102,12 @@ public class ElectricCableBlock extends BlockWithEntity implements Waterloggable
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext context) {
-        return getDefaultState()
-                .with(WATERLOGGED, context.getWorld().getFluidState(context.getBlockPos()).getFluid() == Fluids.WATER);
+        return getDefaultState().with(WATERLOGGED, context.getWorld().getFluidState(context.getBlockPos()).getFluid() == Fluids.WATER);
     }
 
     @SuppressWarnings("deprecation")
     @Override
-    public BlockState getStateForNeighborUpdate(BlockState ourState, Direction direction, BlockState otherState,
-                                                WorldAccess worldIn, BlockPos ourPos, BlockPos otherPos) {
+    public BlockState getStateForNeighborUpdate(BlockState ourState, Direction direction, BlockState otherState, WorldAccess worldIn, BlockPos ourPos, BlockPos otherPos) {
         if (ourState.get(WATERLOGGED)) {
             worldIn.scheduleFluidTick(ourPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
         }
@@ -162,6 +178,50 @@ public class ElectricCableBlock extends BlockWithEntity implements Waterloggable
         if (TechRebornConfig.uninsulatedElectrocutionParticles) {
             world.addParticle(ParticleTypes.CRIT, entity.getX(), entity.getY(), entity.getZ(), 0, 0, 0);
         }
+    }*/
+
+    /*@SuppressWarnings("deprecation")
+    @Override
+    public ActionResult onUse(BlockState state, World worldIn, BlockPos pos, PlayerEntity playerIn, Hand hand, BlockHitResult hitResult) {
+        ItemStack stack = playerIn.getStackInHand(Hand.MAIN_HAND);
+        BlockEntity blockEntity = worldIn.getBlockEntity(pos);
+
+        // We should always have blockEntity entity. I hope.
+        if (blockEntity == null) {
+            return ActionResult.FAIL;
+        }
+
+        if (stack.isEmpty()) {
+            return super.onUse(state, worldIn, pos, playerIn, hand, hitResult);
+        }
+
+        if (ToolManager.INSTANCE.canHandleTool(stack)) {
+            if (state.get(COVERED) && !playerIn.isSneaking()) {
+                ((CableBlockEntity) blockEntity).setCover(null);
+                worldIn.setBlockState(pos, state.with(COVERED, false));
+                worldIn.playSound(playerIn, pos, SoundEvents.BLOCK_WOOD_BREAK, SoundCategory.BLOCKS, 0.6F, 1.0F);
+                if (!worldIn.isClient) {
+                    ItemScatterer.spawn(worldIn, pos.getX(), pos.getY(), pos.getZ(), TRContent.Plates.WOOD.getStack());
+                }
+                return ActionResult.SUCCESS;
+            }
+
+            if (WrenchUtils.handleWrench(stack, worldIn, pos, playerIn, hitResult.getSide())) {
+                return ActionResult.SUCCESS;
+            }
+        }
+
+        if (!state.get(COVERED) && !type.canKill
+                && stack.getItem() == TRContent.Plates.WOOD.asItem()) {
+            worldIn.setBlockState(pos, state.with(COVERED, true));
+            worldIn.playSound(playerIn, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 0.6F, 1.0F);
+            if (!worldIn.isClient && !playerIn.isCreative()) {
+                stack.decrement(1);
+            }
+            return ActionResult.SUCCESS;
+        }
+
+        return super.onUse(state, worldIn, pos, playerIn, hand, hitResult);
     }*/
 
     @Override

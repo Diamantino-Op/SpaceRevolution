@@ -30,11 +30,15 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateCable(Block block, BlockStateModelGenerator blockStateModelGenerator) {
         MultipartBlockStateSupplier builder = MultipartBlockStateSupplier.create(block);
 
-        Identifier coreCableIdentifier = TexturedModel.makeFactory(ModModelProvider::cableTexture, fromParent("cables/base_cable_core", TextureKey.of("cable"))).upload(block, blockStateModelGenerator.modelCollector);
+        TextureKey key = TextureKey.of("cable");
+
+        Identifier coreCableIdentifier = fromParent("cables/base_cable_core", "core", key).upload(block, cableTexture(key, block), blockStateModelGenerator.modelCollector);
+
+        blockStateModelGenerator.registerParentedItemModel(block, coreCableIdentifier);
 
         builder.with(BlockStateVariant.create().put(VariantSettings.MODEL, coreCableIdentifier));
 
-        Identifier sideCableIdentifier = TexturedModel.makeFactory(ModModelProvider::cableTexture, fromParent("cables/base_cable_side", TextureKey.of("cable"))).upload(block, blockStateModelGenerator.modelCollector);
+        Identifier sideCableIdentifier = fromParent("cables/base_cable_side", "side", key).upload(block, cableTexture(key, block), blockStateModelGenerator.modelCollector);
 
         List<Direction> directions = new ArrayList<>(List.of(Direction.values()));
 
@@ -49,19 +53,19 @@ public class ModModelProvider extends FabricModelProvider {
                     builder.with(When.create().set(ElectricCableBlock.SOUTH, true), variant);
                 }
                 case EAST -> {
-                    BlockStateVariant variant = BlockStateVariant.create().put(VariantSettings.MODEL, sideCableIdentifier).put(VariantSettings.Y, VariantSettings.Rotation.R270);
+                    BlockStateVariant variant = BlockStateVariant.create().put(VariantSettings.MODEL, sideCableIdentifier).put(VariantSettings.Y, VariantSettings.Rotation.R90);
                     builder.with(When.create().set(ElectricCableBlock.EAST, true), variant);
                 }
                 case WEST -> {
-                    BlockStateVariant variant = BlockStateVariant.create().put(VariantSettings.MODEL, sideCableIdentifier).put(VariantSettings.Y, VariantSettings.Rotation.R90);
+                    BlockStateVariant variant = BlockStateVariant.create().put(VariantSettings.MODEL, sideCableIdentifier).put(VariantSettings.Y, VariantSettings.Rotation.R270);
                     builder.with(When.create().set(ElectricCableBlock.WEST, true), variant);
                 }
                 case UP -> {
-                    BlockStateVariant variant = BlockStateVariant.create().put(VariantSettings.MODEL, sideCableIdentifier).put(VariantSettings.X, VariantSettings.Rotation.R90);
+                    BlockStateVariant variant = BlockStateVariant.create().put(VariantSettings.MODEL, sideCableIdentifier).put(VariantSettings.X, VariantSettings.Rotation.R270);
                     builder.with(When.create().set(ElectricCableBlock.UP, true), variant);
                 }
                 case DOWN -> {
-                    BlockStateVariant variant = BlockStateVariant.create().put(VariantSettings.MODEL, sideCableIdentifier).put(VariantSettings.X, VariantSettings.Rotation.R270);
+                    BlockStateVariant variant = BlockStateVariant.create().put(VariantSettings.MODEL, sideCableIdentifier).put(VariantSettings.X, VariantSettings.Rotation.R90);
                     builder.with(When.create().set(ElectricCableBlock.DOWN, true), variant);
                 }
             }
@@ -70,13 +74,12 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.blockStateCollector.accept(builder);
     }
 
-    private Model fromParent(String parent, TextureKey ... requiredTextureKeys) {
-        return new Model(Optional.of(new Identifier(ModReferences.modId, "block/" + parent)), Optional.empty(), requiredTextureKeys);
+    private Model fromParent(String parent, String type, TextureKey ... requiredTextureKeys) {
+        return new Model(Optional.of(new Identifier(ModReferences.modId, "block/" + parent)), Optional.of("_" + type), requiredTextureKeys);
     }
 
-    public static TextureMap cableTexture(Block block) {
-        ModReferences.logger.warn(Registries.BLOCK.getId(block));
-        return new TextureMap().put(TextureKey.of("cable"), new Identifier(ModReferences.modId, "block/cables/" + Registries.BLOCK.getId(block)));
+    public TextureMap cableTexture(TextureKey key, Block block) {
+        return new TextureMap().put(key, new Identifier(ModReferences.modId, "block/cables/" + Registries.BLOCK.getId(block).getPath()));
     }
 
     @Override
