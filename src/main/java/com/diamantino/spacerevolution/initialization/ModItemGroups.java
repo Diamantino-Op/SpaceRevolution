@@ -8,9 +8,11 @@ import net.minecraft.util.Identifier;
 
 public class ModItemGroups {
     public static ItemGroup machines;
+    public static ItemGroup cables;
 
     public static void registerItemGroups() {
         machines = FabricItemGroup.builder(new Identifier(ModReferences.modId, "machines_group")).displayName(Text.literal("Space Revolution Machines")).icon(() -> new ItemStack(ModBlocks.crusherBlock)).build();
+        cables = FabricItemGroup.builder(new Identifier(ModReferences.modId, "cables_group")).displayName(Text.literal("Space Revolution Cables")).icon(() -> new ItemStack(ModBlocks.electricCables.get(0))).build();;
 
         ModReferences.logger.debug("Registering ModItemGroups for " + ModReferences.modId);
     }

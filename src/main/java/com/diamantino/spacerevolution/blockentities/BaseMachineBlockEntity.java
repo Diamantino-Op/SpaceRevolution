@@ -415,6 +415,7 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements Exte
         Optional<? extends BaseRecipe> match = Objects.requireNonNull(entity.getWorld()).getRecipeManager().getFirstMatch(recipeType, inventory, entity.getWorld());
 
         if (match.isPresent() && canInsertAmountIntoOutputSlot(inventory, match.get().getOutput().getCount()) && canInsertItemIntoOutputSlot(inventory, match.get().getOutput().getItem())) {
+            //TODO: Only send output stack packet if it changed
             entity.outputStack = match.get().getOutput().copy();
             entity.sendOutputSyncPacket();
 
@@ -446,6 +447,7 @@ public abstract class BaseMachineBlockEntity extends BlockEntity implements Exte
         Optional<? extends BaseRecipe> recipe = Objects.requireNonNull(entity.getWorld()).getRecipeManager().getFirstMatch(recipeType, inventory, entity.getWorld());
 
         if (hasRecipe(entity) && recipe.isPresent()) {
+            //TODO: Only send output stack packet if it changed
             entity.outputStack = ItemStack.EMPTY;
             entity.sendOutputSyncPacket();
 
