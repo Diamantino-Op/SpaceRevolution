@@ -1,6 +1,19 @@
 {
   "block.spacerevolution.crusher": "Crusher",
+  "block.spacerevolution.asteroid_block": "Asteroid Block",
+  "block.spacerevolution.resourceful_asteroid_block": "Resourceful Asteroid Block",
+  "block.spacerevolution.copper_cable": "Copper Cable",
+  "block.spacerevolution.insulated_copper_cable": "Insulated Copper Cable",
+  "block.spacerevolution.gold_cable": "Gold Cable",
+  "block.spacerevolution.insulated_gold_cable": "Insulated Gold Cable",
+  "block.spacerevolution.silver_cable": "Silver Cable",
+  "block.spacerevolution.insulated_silver_cable": "Insulated Silver Cable",
+  "block.spacerevolution.glass_fiber": "Glass Fiber Cable",
+  "block.spacerevolution.plasma": "Plasma Cable",
+  "block.spacerevolution.quantum": "Quantum Cable",
+
   "machine.spacerevolution.crusher.name": "Crusher",
+
   "spacerevolution.tooltip.liquid.amount.with.capacity": "%s / %s mB",
   "spacerevolution.tooltip.liquid.amount": "%s mB"
 }

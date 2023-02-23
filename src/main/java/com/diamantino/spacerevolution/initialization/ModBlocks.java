@@ -22,6 +22,11 @@ public class ModBlocks {
     //Machines
     public static final Block crusherBlock = registerBlock("crusher", new CrusherBlock(FabricBlockSettings.of(Material.METAL).strength(5).requiresTool().luminance(state -> state.get(BaseMachineBlock.ACTIVE) ? 15 : 0).nonOpaque()), ModItemGroups.machines);
 
+    //Blocks
+    public static final Block asteroidBlock = registerBlock("asteroid_block", new Block(FabricBlockSettings.of(Material.STONE).strength(3).requiresTool()), ModItemGroups.blocks);
+    public static final Block resourcefulAsteroidBlock = registerBlock("resourceful_asteroid_block", new Block(FabricBlockSettings.of(Material.STONE).strength(3).requiresTool()), ModItemGroups.blocks);
+
+    //Cables
     public static final List<Block> electricCables = registerElectricCables();
 
     private static List<Block> registerElectricCables() {

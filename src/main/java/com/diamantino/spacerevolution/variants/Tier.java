@@ -1,6 +1,6 @@
 package com.diamantino.spacerevolution.variants;
 
-public enum EnergyTier {
+public enum Tier {
     BASIC(1024, 1024),
     INTERMEDIATE(32768, 32768),
     ADVANCED(1048576, 1048576),
@@ -11,7 +11,7 @@ public enum EnergyTier {
     private final long maxInput;
     private final long maxOutput;
 
-    private EnergyTier(long maxInput, long maxOutput) {
+    private Tier(long maxInput, long maxOutput) {
         this.maxInput = maxInput;
         this.maxOutput = maxOutput;
     }
@@ -24,10 +24,10 @@ public enum EnergyTier {
         return this.maxOutput;
     }
 
-    public static EnergyTier getTier(long power) {
-        EnergyTier[] var2 = values();
+    public static Tier getTier(long power) {
+        Tier[] var2 = values();
 
-        for (EnergyTier tier : var2) {
+        for (Tier tier : var2) {
             if (tier.getMaxInput() >= power) {
                 return tier;
             }

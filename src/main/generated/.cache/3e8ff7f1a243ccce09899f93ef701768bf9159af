@@ -1,1 +1,11 @@
-// 1.19.3	2023-02-22T20:50:42.2555847	SpaceRevolution/Block Loot Tables
+// 1.19.3	2023-02-23T18:14:35.1624776	SpaceRevolution/Block Loot Tables
+69fc9b7712ebbb4a8b42b617acce4a2b70ec867d data\spacerevolution\loot_tables\blocks\silver_cable.json
+508b0226caf12e9567df58a080c8ceeb805e4366 data\spacerevolution\loot_tables\blocks\gold_cable.json
+27919d7850aa94cb717eab7d0730ee8ca4519211 data\spacerevolution\loot_tables\blocks\plasma_cable.json
+866a45331afa3c15133e92bb30c3beb39eb0ee7d data\spacerevolution\loot_tables\blocks\copper_cable.json
+4579a0f741a86b40d1de4cb2cb439d5b1476e297 data\spacerevolution\loot_tables\blocks\asteroid_block.json
+03902897ad92b4f8b14ee5bbf8bd5cdb97126f44 data\spacerevolution\loot_tables\blocks\insulated_silver_cable.json
+28d5eed73b22d5ac180be89a268387ebfc9ecb30 data\spacerevolution\loot_tables\blocks\quantum_cable.json
+581f2b702aaac0925f868cd9773cd65fd66c8aeb data\spacerevolution\loot_tables\blocks\insulated_copper_cable.json
+2f0dd5663c59a74541c72dd5f7bb1d57cb7e5302 data\spacerevolution\loot_tables\blocks\glass_fiber_cable.json
+c75946dfcd5cb9096764d3593ed11f36840463d2 data\spacerevolution\loot_tables\blocks\insulated_gold_cable.json
