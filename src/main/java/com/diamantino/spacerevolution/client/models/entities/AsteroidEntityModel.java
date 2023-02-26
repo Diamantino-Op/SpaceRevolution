@@ -1,4 +1,4 @@
-package com.diamantino.spacerevolution.entities;
+package com.diamantino.spacerevolution.client.models.entities;
 
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
@@ -6,7 +6,7 @@ import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 
-public class AsteroidEntity extends EntityModel<Entity> {
+public class AsteroidEntityModel extends EntityModel<Entity> {
 	private final ModelPart Layer1;
 	private final ModelPart Layer2;
 	private final ModelPart Layer3;
@@ -19,7 +19,7 @@ public class AsteroidEntity extends EntityModel<Entity> {
 	private final ModelPart Layer10;
 	private final ModelPart Layer11;
 	private final ModelPart Layer12;
-	public AsteroidEntity(ModelPart root) {
+	public AsteroidEntityModel(ModelPart root) {
 		this.Layer1 = root.getChild("Layer1");
 		this.Layer2 = root.getChild("Layer2");
 		this.Layer3 = root.getChild("Layer3");
