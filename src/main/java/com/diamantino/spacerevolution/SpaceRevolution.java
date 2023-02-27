@@ -16,4 +16,8 @@ public class SpaceRevolution implements ModInitializer {
         ModFeatures.registerModFeatures();
         //TODO: Add asteroid entities that when hit the ground, they spawn a crater with the roid at the center
     }
+
+    public void onRegisterReloadListeners(BiConsumer<ResourceLocation, PreparableReloadListener> registry) {
+        registry.accept(new ResourceLocation(AdAstra.MOD_ID, "planet_data"), new PlanetData());
+    }
 }

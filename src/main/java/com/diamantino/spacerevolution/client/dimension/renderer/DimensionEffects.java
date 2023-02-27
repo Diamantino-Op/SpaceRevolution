@@ -1,6 +1,7 @@
 package com.diamantino.spacerevolution.client.dimension.renderer;
 
 import com.diamantino.spacerevolution.client.resourcepack.PlanetSkyRenderer;
+import com.diamantino.spacerevolution.utils.ColourUtils;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.texture.TextureManager;
 import net.minecraft.client.util.math.MatrixStack;
