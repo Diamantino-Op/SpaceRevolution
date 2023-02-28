@@ -12,7 +12,9 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceManager;
+import net.minecraft.resource.SynchronousResourceReloader;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.JsonHelper;
 import net.minecraft.util.profiler.Profiler;
 
 import java.io.InputStreamReader;
@@ -24,12 +26,12 @@ import java.util.concurrent.Executor;
 
 // CREDIT: https://github.com/terrarium-earth/Ad-Astra
 @Environment(EnvType.CLIENT)
-public class PlanetResources implements IdentifiableResourceReloadListener {
+public class PlanetResources implements SynchronousResourceReloader {
 
     public static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
     @Override
-    public CompletableFuture<Void> reload(Synchronizer synchronizer, ResourceManager manager, Profiler prepareProfiler, Profiler applyProfiler, Executor prepareExecutor, Executor applyExecutor) {
+    public void reload(ResourceManager manager) {
         List<PlanetSkyRenderer> skyRenderers = new ArrayList<>();
         List<SolarSystem> solarSystems = new ArrayList<>();
         List<PlanetRing> planetRings = new ArrayList<>();
@@ -40,7 +42,7 @@ public class PlanetResources implements IdentifiableResourceReloadListener {
             try {
                 for (Resource resource : manager.getAllResources(id)) {
                     InputStreamReader reader = new InputStreamReader(resource.getInputStream());
-                    JsonObject jsonObject = GsonHelper.fromJson(GSON, reader, JsonObject.class);
+                    JsonObject jsonObject = JsonHelper.deserialize(GSON, reader, JsonObject.class);
 
                     if (jsonObject != null) {
                         skyRenderers.add(PlanetSkyRenderer.CODEC.parse(JsonOps.INSTANCE, jsonObject).getOrThrow(false, ModReferences.logger::error));
@@ -57,7 +59,7 @@ public class PlanetResources implements IdentifiableResourceReloadListener {
             try {
                 for (Resource resource : manager.getAllResources(id)) {
                     InputStreamReader reader = new InputStreamReader(resource.getInputStream());
-                    JsonObject jsonObject = GsonHelper.fromJson(GSON, reader, JsonObject.class);
+                    JsonObject jsonObject = JsonHelper.deserialize(GSON, reader, JsonObject.class);
 
                     if (jsonObject != null) {
                         solarSystems.add(SolarSystem.CODEC.parse(JsonOps.INSTANCE, jsonObject).getOrThrow(false, ModReferences.logger::error));
@@ -73,7 +75,7 @@ public class PlanetResources implements IdentifiableResourceReloadListener {
             try {
                 for (Resource resource : manager.getAllResources(id)) {
                     InputStreamReader reader = new InputStreamReader(resource.getInputStream());
-                    JsonObject jsonObject = GsonHelper.fromJson(GSON, reader, JsonObject.class);
+                    JsonObject jsonObject = JsonHelper.deserialize(GSON, reader, JsonObject.class);
 
                     if (jsonObject != null) {
                         planetRings.add(PlanetRing.CODEC.parse(JsonOps.INSTANCE, jsonObject).getOrThrow(false, ModReferences.logger::error));
@@ -89,7 +91,7 @@ public class PlanetResources implements IdentifiableResourceReloadListener {
             try {
                 for (Resource resource : manager.getAllResources(id)) {
                     InputStreamReader reader = new InputStreamReader(resource.getInputStream());
-                    JsonObject jsonObject = GsonHelper.fromJson(GSON, reader, JsonObject.class);
+                    JsonObject jsonObject = JsonHelper.deserialize(GSON, reader, JsonObject.class);
 
                     if (jsonObject != null) {
                         galaxies.add(Galaxy.CODEC.parse(JsonOps.INSTANCE, jsonObject).getOrThrow(false, ModReferences.logger::error));
@@ -108,12 +110,5 @@ public class PlanetResources implements IdentifiableResourceReloadListener {
         SpaceRevolutionClient.planetRings = planetRings;
         SpaceRevolutionClient.galaxies = galaxies;
         ModSkies.register();
-
-        return null;
-    }
-
-    @Override
-    public Identifier getFabricId() {
-        return new Identifier(ModReferences.modId, "planet_resources");
     }
 }

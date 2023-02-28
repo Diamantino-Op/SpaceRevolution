@@ -1,10 +1,10 @@
 package com.diamantino.spacerevolution.client.resourcepack;
 
 import com.diamantino.spacerevolution.client.dimension.renderer.StarInformation;
-import com.diamantino.spacerevolution.utils.Color;
 import com.diamantino.spacerevolution.utils.ModUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.teamresourceful.resourcefullib.common.color.Color;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.registry.RegistryKey;

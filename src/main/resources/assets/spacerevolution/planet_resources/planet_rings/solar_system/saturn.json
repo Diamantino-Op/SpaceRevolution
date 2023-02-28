@@ -1,0 +1,8 @@
+{
+  "galaxy": "spacerevolution:milky_way",
+  "solar_system": "spacerevolution:solar_system",
+  "texture": "spacerevolution:textures/sky/saturn.png",
+  "speed": 1400,
+  "scale": 30,
+  "radius": 6.0
+}

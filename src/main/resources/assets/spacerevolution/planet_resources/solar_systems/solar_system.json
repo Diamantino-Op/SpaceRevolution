@@ -1,0 +1,13 @@
+{
+  "galaxy": "spacerevolution:milky_way",
+  "solar_system": "spacerevolution:solar_system",
+  "sun": "spacerevolution:textures/sky/gui/sun.png",
+  "sun_scale": 15,
+  "button_color": "blue",
+  "ring_color": {
+    "r": 36,
+    "g": 50,
+    "b": 123,
+    "a": 200
+  }
+}

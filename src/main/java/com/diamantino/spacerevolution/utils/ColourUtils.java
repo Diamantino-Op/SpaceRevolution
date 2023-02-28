@@ -1,8 +1,10 @@
 package com.diamantino.spacerevolution.utils;
 
+import com.teamresourceful.resourcefullib.common.color.Color;
 import net.minecraft.util.math.Vec3d;
 
 public final class ColourUtils {
+
     public static Color lighten(Color colour, float amount) {
         return new Color((int) (colour.getIntRed() + amount * 255),
                 (int) (colour.getIntGreen() + amount * 255),

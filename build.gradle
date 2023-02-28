@@ -13,6 +13,7 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+    maven { url = "https://nexus.resourcefulbees.com/repository/maven-public/" }
 }
 
 dependencies {
@@ -24,6 +25,9 @@ dependencies {
 
     modImplementation("curse.maven:techreborn-233564:4142163")
     modImplementation("curse.maven:reborncore-237903:4142164")
+
+    modApi("com.teamresourceful.resourcefullib:resourcefullib-fabric-$rootProject.minecraft_version:$rootProject.resourcefullib_version")
+    modApi("com.teamresourceful.resourcefulconfig:resourcefulconfig-fabric-$rootProject.minecraft_version:$rootProject.resourcefulconfig_version")
 
     include modApi("teamreborn:energy:${project.energy_api_version}") {
         exclude(group: "net.fabricmc.fabric-api")

@@ -1,0 +1,8 @@
+{
+  "galaxy": "spacerevolution:milky_way",
+  "solar_system": "spacerevolution:solar_system",
+  "texture": "spacerevolution:textures/sky/pluto.png",
+  "speed": 2000,
+  "scale": 6,
+  "radius": 0.8
+}

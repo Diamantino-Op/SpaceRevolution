@@ -1,5 +1,7 @@
 package com.diamantino.spacerevolution.utils;
 
+import com.diamantino.spacerevolution.data.Planet;
+import com.diamantino.spacerevolution.data.PlanetData;
 import com.diamantino.spacerevolution.initialization.ModReferences;
 import com.mojang.serialization.Codec;
 import net.minecraft.entity.Entity;
@@ -181,70 +183,71 @@ public class ModUtils {
      *
      * @return The level's orbit dimension, or the overlevel if no orbit is defined
      */
-    /*public static RegistryKey<World> getPlanetOrbit(World level) {
-        return PlanetData.getPlanetFromOrbit(level.getDimension()).map(Planet::level).orElse(DimensionTypes.OVERWORLD);
+    public static RegistryKey<World> getPlanetOrbit(World level) {
+        return PlanetData.getPlanetFromOrbit(level.getRegistryKey()).map(Planet::level).orElse(World.OVERWORLD);
     }
 
     public static float getEntityGravity(Entity entity) {
         return getPlanetGravity(entity.getWorld());
-    }*/
+    }
 
     /**
      * Gets the gravity of the level, in ratio to earth gravity. So a gravity of 1.0 is equivalent to earth gravity, while 0.5 would be half of earth's gravity and 2.0 would be twice the earth's gravity.
      *
      * @return The gravity of the level or earth gravity if the level does not have a defined gravity
      */
-    /*public static float getPlanetGravity(World level) {
+    public static float getPlanetGravity(World level) {
         // Do not affect gravity for non-Ad Astra dimensions
         if (!ModUtils.isSpacelevel(level)) {
             return 1.0f;
         }
-
-        if (isOrbitlevel(level)) {
+        //TODO: Fix
+        /*if (isOrbitlevel(level)) {
             return AdAstraConfig.orbitGravity / VANILLA_GRAVITY;
-        }
-        return PlanetData.getPlanetFromLevel(level.dimension()).map(Planet::gravity).orElse(VANILLA_GRAVITY) / VANILLA_GRAVITY;
-    }*/
+        }*/
+        return PlanetData.getPlanetFromLevel(level.getRegistryKey()).map(Planet::gravity).orElse(VANILLA_GRAVITY) / VANILLA_GRAVITY;
+    }
 
-    /*public static boolean planetHasAtmosphere(World level) {
-        return PlanetData.getPlanetFromLevel(level.getDimension()).map(Planet::hasAtmosphere).orElse(false);
-    }*/
+    public static boolean planetHasAtmosphere(World level) {
+        return PlanetData.getPlanetFromLevel(level.getRegistryKey()).map(Planet::hasAtmosphere).orElse(false);
+    }
 
     /**
      * Gets the temperature of the level in celsius.
      *
      * @return The temperature of the level, or 20° for dimensions without a defined temperature
      */
-    /*public static float getWorldTemperature(World level) {
+    public static float getWorldTemperature(World level) {
         if (isOrbitlevel(level)) {
             return ORBIT_TEMPERATURE;
         }
-        return PlanetData.getPlanetFromLevel(level.getDimension()).map(Planet::temperature).orElse(20.0f);
-    }*/
+        return PlanetData.getPlanetFromLevel(level.getRegistryKey()).map(Planet::temperature).orElse(20.0f);
+    }
 
     /**
      * Checks if the level is either a planet or an orbit level.
      */
-    /*public static boolean isSpacelevel(World level) {
+    public static boolean isSpacelevel(World level) {
         return isPlanet(level) || isOrbitlevel(level);
-    }*/
+    }
 
     /**
      * Check if the level is labeled as a planet dimension.
      */
-    /*public static boolean isPlanet(World level) {
-        if (AdAstraConfig.avoidOverworldChecks && DimensionTypes.OVERWORLD.equals(level.getDimension())) {
+    public static boolean isPlanet(World level) {
+        //TODO: Fix
+        if (/*AdAstraConfig.avoidOverworldChecks && */DimensionTypes.OVERWORLD.equals(level.getRegistryKey())) {
             return false;
         }
         return PlanetData.isPlanetLevel(level);
-    }*/
+    }
 
     /**
      * Checks if the level is labeled as an orbit dimension.
      */
-    /*public static boolean isOrbitlevel(World level) {
-        return PlanetData.isOrbitLevel(level.getDimension());
-    }*/
+    public static boolean isOrbitlevel(World level) {
+        return PlanetData.isOrbitLevel(level.getRegistryKey());
+    }
 
     /**
      * Spawns a server-side particle that renders regardless of the distance away from the player. This is important as normal particles are only rendered at up to 32 blocks away.

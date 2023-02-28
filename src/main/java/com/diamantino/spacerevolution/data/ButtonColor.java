@@ -1,7 +1,6 @@
 package com.diamantino.spacerevolution.data;
 
 import com.diamantino.spacerevolution.initialization.ModReferences;
-import com.diamantino.spacerevolution.utils.Color;
 import com.mojang.serialization.Codec;
 
 import java.util.Arrays;

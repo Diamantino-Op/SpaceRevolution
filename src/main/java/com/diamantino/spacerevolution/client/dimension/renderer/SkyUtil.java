@@ -1,7 +1,7 @@
 package com.diamantino.spacerevolution.client.dimension.renderer;
 
 import com.diamantino.spacerevolution.client.resourcepack.PlanetSkyRenderer;
-import com.diamantino.spacerevolution.utils.Color;
+import com.diamantino.spacerevolution.world.LevelSeed;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.EnvType;
@@ -15,7 +15,6 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.gen.GeneratorOptions;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
@@ -128,7 +127,7 @@ public class SkyUtil {
     public static BufferBuilder.BuiltBuffer renderStars(BufferBuilder buffer, int stars, boolean colouredStars) {
         RenderSystem.setShader(GameRenderer::getPositionColorProgram);
         buffer.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
-        StarInformation info = StarInformation.STAR_CACHE.apply(GeneratorOptions.getRandomSeed(), stars);
+        StarInformation info = StarInformation.STAR_CACHE.apply(LevelSeed.getSeed(), stars);
         for (int i = 0; i < stars; ++i) {
             Vector3f vec3f = info.getParam1(i);
             float d = vec3f.x();

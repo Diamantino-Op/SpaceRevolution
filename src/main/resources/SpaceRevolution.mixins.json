@@ -4,8 +4,10 @@
   "package": "com.diamantino.spacerevolution.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "WorldGenSettingsMixin"
   ],
   "client": [
+    "WorldRenderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

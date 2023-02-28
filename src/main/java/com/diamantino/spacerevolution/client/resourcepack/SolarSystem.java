@@ -1,7 +1,6 @@
 package com.diamantino.spacerevolution.client.resourcepack;
 
 import com.diamantino.spacerevolution.data.ButtonColor;
-import com.diamantino.spacerevolution.utils.Color;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.fabricmc.api.EnvType;

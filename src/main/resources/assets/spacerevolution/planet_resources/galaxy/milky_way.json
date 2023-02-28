@@ -1,0 +1,6 @@
+{
+  "galaxy": "spacerevolution:milky_way",
+  "texture": "spacerevolution:textures/sky/milky_way.png",
+  "button_color": "purple",
+  "scale": 250
+}

@@ -1,7 +1,7 @@
 package com.diamantino.spacerevolution.client.dimension.renderer;
 
 import com.diamantino.spacerevolution.utils.CacheableBiFunction;
-import com.diamantino.spacerevolution.utils.Color;
+import com.teamresourceful.resourcefullib.common.color.Color;
 import org.joml.Vector3f;
 
 import java.util.Random;

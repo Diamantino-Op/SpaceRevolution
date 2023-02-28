@@ -4,7 +4,6 @@ import com.diamantino.spacerevolution.client.renderers.blockentities.CrusherBloc
 import com.diamantino.spacerevolution.client.resourcepack.*;
 import com.diamantino.spacerevolution.client.screen.CrusherScreen;
 import com.diamantino.spacerevolution.initialization.*;
-import com.mojang.bridge.game.PackType;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

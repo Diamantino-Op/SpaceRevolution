@@ -1,0 +1,8 @@
+{
+  "galaxy": "spacerevolution:milky_way",
+  "solar_system": "spacerevolution:solar_system",
+  "texture": "spacerevolution:textures/sky/neptune.png",
+  "speed": 1600,
+  "scale": 18,
+  "radius": 8.0
+}
