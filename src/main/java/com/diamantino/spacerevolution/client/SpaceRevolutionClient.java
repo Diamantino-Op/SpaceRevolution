@@ -16,6 +16,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.resource.ResourceType;
+import net.minecraft.resource.SynchronousResourceReloader;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.profiler.Profiler;
 
@@ -57,7 +58,7 @@ public class SpaceRevolutionClient implements ClientModInitializer {
         }));
     }
 
-    public void onRegisterReloadListeners(BiConsumer<Identifier, IdentifiableResourceReloadListener> registry) {
+    public void onRegisterReloadListeners(BiConsumer<Identifier, SynchronousResourceReloader> registry) {
         registry.accept(new Identifier(ModReferences.modId, "planet_resources"), new PlanetResources());
     }
 }

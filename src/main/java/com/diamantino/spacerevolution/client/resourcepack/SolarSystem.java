@@ -3,6 +3,7 @@ package com.diamantino.spacerevolution.client.resourcepack;
 import com.diamantino.spacerevolution.data.ButtonColor;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.teamresourceful.resourcefullib.common.color.Color;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.util.Identifier;

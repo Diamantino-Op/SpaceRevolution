@@ -1,0 +1,45 @@
+{
+  "world": "spacerevolution:venus",
+  "stars": {
+    "fancy_count": 1000,
+    "fast_count": 500,
+    "colored_stars": false,
+    "daylight_visible": false
+  },
+  "sunset_color": "vanilla",
+  "dimension_effects": {
+    "type": "foggy_reversed"
+  },
+  "cloud_effects": "jupiter",
+  "weather_effects": "jupiter",
+  "horizon_angle": 180,
+  "sky_objects": [
+    {
+      "texture": "spacerevolution:textures/sky/sun.png",
+      "blending": true,
+      "render_type": "dynamic",
+      "scale": 20.0,
+      "rotation": [
+        0.0,
+        90.0,
+        0.0
+      ]
+    },
+    {
+      "texture": "spacerevolution:textures/sky/light.png",
+      "blending": true,
+      "render_type": "dynamic",
+      "scale": 2.5,
+      "color": {
+        "r": 128,
+        "g": 191,
+        "b": 255
+      },
+      "rotation": [
+        10.0,
+        -94.0,
+        192.0
+      ]
+    }
+  ]
+}

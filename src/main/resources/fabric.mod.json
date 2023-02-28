@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "spacerevolution",
-  "version": "${version}",
+  "version": "1.0.0",
   "name": "SpaceRevolution",
   "description": "",
   "authors": [
@@ -30,6 +30,8 @@
   "depends": {
     "fabricloader": ">=0.14.14",
     "fabric": "*",
-    "minecraft": "1.19.3"
+    "minecraft": "1.19.3",
+    "resourcefullib": ">=1.2.7",
+    "resourcefulconfig": ">=1.1.1"
   }
 }
