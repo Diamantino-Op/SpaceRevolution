@@ -12,5 +12,5 @@
   "solar_power": 19,
   "orbit_solar_power": 21,
   "has_oxygen": false,
-  "button_color": "dark_red"
+  "button_color": "grey"
 }

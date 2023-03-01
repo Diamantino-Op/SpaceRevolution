@@ -1,0 +1,45 @@
+{
+  "world": "spacerevolution:uranus",
+  "stars": {
+    "fancy_count": 600,
+    "fast_count": 300,
+    "colored_stars": false,
+    "daylight_visible": false
+  },
+  "sunset_color": "vanilla",
+  "dimension_effects": {
+    "type": "foggy_reversed"
+  },
+  "cloud_effects": "uranus",
+  "weather_effects": "uranus",
+  "horizon_angle": 180,
+  "sky_objects": [
+    {
+      "texture": "spacerevolution:textures/sky/sun.png",
+      "blending": true,
+      "render_type": "dynamic",
+      "scale": 10.0,
+      "rotation": [
+        0.0,
+        90.0,
+        0.0
+      ]
+    },
+    {
+      "texture": "spacerevolution:textures/sky/light.png",
+      "blending": true,
+      "render_type": "dynamic",
+      "scale": 2.5,
+      "color": {
+        "r": 128,
+        "g": 191,
+        "b": 255
+      },
+      "rotation": [
+        10.0,
+        -94.0,
+        192.0
+      ]
+    }
+  ]
+}

@@ -1,7 +1,19 @@
 package com.diamantino.spacerevolution;
 
+import com.diamantino.spacerevolution.data.PlanetData;
 import com.diamantino.spacerevolution.initialization.*;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.minecraft.resource.ResourceManager;
+import net.minecraft.resource.ResourceReloader;
+import net.minecraft.resource.ResourceType;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.profiler.Profiler;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.BiConsumer;
 
 public class SpaceRevolution implements ModInitializer {
     @Override
@@ -15,9 +27,21 @@ public class SpaceRevolution implements ModInitializer {
         ModMessages.registerC2SPackets();
         ModFeatures.registerModFeatures();
         //TODO: Add asteroid entities that when hit the ground, they spawn a crater with the roid at the center
+
+        onRegisterReloadListeners((id, listener) -> ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new IdentifiableResourceReloadListener() {
+            @Override
+            public CompletableFuture<Void> reload(Synchronizer synchronizer, ResourceManager manager, Profiler prepareProfiler, Profiler applyProfiler, Executor prepareExecutor, Executor applyExecutor) {
+                return listener.reload(synchronizer, manager, prepareProfiler, applyProfiler, prepareExecutor, applyExecutor);
+            }
+
+            @Override
+            public Identifier getFabricId() {
+                return id;
+            }
+        }));
     }
 
-    public void onRegisterReloadListeners(BiConsumer<ResourceLocation, PreparableReloadListener> registry) {
-        registry.accept(new ResourceLocation(AdAstra.MOD_ID, "planet_data"), new PlanetData());
+    public void onRegisterReloadListeners(BiConsumer<Identifier, ResourceReloader> registry) {
+        registry.accept(new Identifier(ModReferences.modId, "planet_data"), new PlanetData());
     }
 }

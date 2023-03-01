@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
 
+import java.util.List;
+
 public class ModLootTableGenerator extends FabricBlockLootTableProvider {
     public ModLootTableGenerator(FabricDataOutput dataOutput) {
         super(dataOutput);
@@ -25,6 +27,12 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
             addDrop(block);
         }
 
-        addDrop(ModBlocks.asteroidBlock);
+        List<Block> genericBlocks = new java.util.ArrayList<>(ModBlocks.genericBlocks.stream().toList());
+
+        genericBlocks.remove(ModBlocks.resourcefulAsteroidBlock);
+
+        for (Block block : genericBlocks) {
+            addDrop(block);
+        }
     }
 }

@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(WorldGenSettings.class)
-public interface WorldGenSettingsMixin {
+public class WorldGenSettingsMixin {
     @Inject(at = @At(value = "TAIL"), method = "<init>(Lnet/minecraft/world/gen/GeneratorOptions;Lnet/minecraft/world/dimension/DimensionOptionsRegistryHolder;)V")
     private void generatorOptions(GeneratorOptions worldOptions, DimensionOptionsRegistryHolder worldDimensions, CallbackInfo ci) {
         LevelSeed.setSeed(worldOptions.getSeed());

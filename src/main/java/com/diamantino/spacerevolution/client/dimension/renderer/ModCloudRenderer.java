@@ -19,10 +19,14 @@ import org.joml.Matrix4f;
 
 // CREDIT: https://github.com/terrarium-earth/Ad-Astra
 @Environment(EnvType.CLIENT)
-public class VenusCloudRenderer {
-    private static final Identifier VENUS_CLOUD_TEXTURE = new Identifier(ModReferences.modId, "textures/sky/venus/clouds.png");
+public class ModCloudRenderer {
+    private final Identifier cloudTexture;
 
-    public static void render(ClientWorld level, int ticks, float tickDelta, MatrixStack poseStack, double cameraX, double cameraY, double cameraZ, Matrix4f projectionMatrix) {
+    public ModCloudRenderer(Identifier cloudTexture) {
+        this.cloudTexture = cloudTexture;
+    }
+
+    public void render(ClientWorld level, int ticks, float tickDelta, MatrixStack poseStack, double cameraX, double cameraY, double cameraZ, Matrix4f projectionMatrix) {
 
         MinecraftClient minecraft = MinecraftClient.getInstance();
         WorldRenderMixin renderer = (WorldRenderMixin) minecraft.worldRenderer;
@@ -70,7 +74,7 @@ public class VenusCloudRenderer {
             }
 
             RenderSystem.setShader(GameRenderer::getPositionTexColorNormalProgram);
-            RenderSystem.setShaderTexture(0, VENUS_CLOUD_TEXTURE);
+            RenderSystem.setShaderTexture(0, cloudTexture);
             BackgroundRenderer.setFogBlack();
             poseStack.push();
             poseStack.scale(12.0f, 1.0f, 12.0f);

@@ -1,8 +1,8 @@
 {
-  "world": "spacerevolution:venus",
+  "world": "spacerevolution:jupiter",
   "stars": {
-    "fancy_count": 1000,
-    "fast_count": 500,
+    "fancy_count": 200,
+    "fast_count": 100,
     "colored_stars": false,
     "daylight_visible": false
   },

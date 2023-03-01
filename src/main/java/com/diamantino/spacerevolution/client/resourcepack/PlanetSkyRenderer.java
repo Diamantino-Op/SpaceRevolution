@@ -51,14 +51,13 @@ public record PlanetSkyRenderer(RegistryKey<World> dimension, PlanetSkyRenderer.
     }
 
     public enum CloudEffects {
-        NONE, VANILLA, VENUS;
+        NONE, VANILLA, VENUS, JUPITER, URANUS, NEPTUNE;
 
         public static final Codec<CloudEffects> CODEC = ModUtils.createEnumCodec(CloudEffects.class);
     }
 
-    public enum
-    WeatherEffects {
-        NONE, VANILLA, VENUS;
+    public enum WeatherEffects {
+        NONE, VANILLA, VENUS, JUPITER, URANUS, NEPTUNE;
 
         public static final Codec<WeatherEffects> CODEC = ModUtils.createEnumCodec(WeatherEffects.class);
     }

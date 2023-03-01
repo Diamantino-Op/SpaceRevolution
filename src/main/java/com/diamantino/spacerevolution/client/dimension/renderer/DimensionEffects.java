@@ -1,11 +1,13 @@
 package com.diamantino.spacerevolution.client.dimension.renderer;
 
 import com.diamantino.spacerevolution.client.resourcepack.PlanetSkyRenderer;
+import com.diamantino.spacerevolution.initialization.ModReferences;
 import com.diamantino.spacerevolution.utils.ColourUtils;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.texture.TextureManager;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.world.ClientWorld;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 import org.joml.Matrix4f;
 
@@ -35,7 +37,19 @@ public class DimensionEffects extends net.minecraft.client.render.DimensionEffec
             case NONE -> true;
             case VANILLA -> false;
             case VENUS -> {
-                VenusCloudRenderer.render(level, ticks, tickDelta, poseStack, cameraX, cameraY, cameraZ, projectionMatrix);
+                new ModCloudRenderer(new Identifier(ModReferences.modId, "textures/sky/venus/clouds.png")).render(level, ticks, tickDelta, poseStack, cameraX, cameraY, cameraZ, projectionMatrix);
+                yield true;
+            }
+            case JUPITER -> {
+                new ModCloudRenderer(new Identifier(ModReferences.modId, "textures/sky/jupiter/clouds.png")).render(level, ticks, tickDelta, poseStack, cameraX, cameraY, cameraZ, projectionMatrix);
+                yield true;
+            }
+            case URANUS -> {
+                new ModCloudRenderer(new Identifier(ModReferences.modId, "textures/sky/uranus/clouds.png")).render(level, ticks, tickDelta, poseStack, cameraX, cameraY, cameraZ, projectionMatrix);
+                yield true;
+            }
+            case NEPTUNE -> {
+                new ModCloudRenderer(new Identifier(ModReferences.modId, "textures/sky/neptune/clouds.png")).render(level, ticks, tickDelta, poseStack, cameraX, cameraY, cameraZ, projectionMatrix);
                 yield true;
             }
         };
@@ -64,7 +78,19 @@ public class DimensionEffects extends net.minecraft.client.render.DimensionEffec
             case NONE -> true;
             case VANILLA -> false;
             case VENUS -> {
-                ModWeatherRenderer.render(level, ticks, tickDelta, manager, cameraX, cameraY, cameraZ);
+                new ModWeatherRenderer(new Identifier(ModReferences.modId, "textures/sky/venus/rain.png")).render(level, ticks, tickDelta, manager, cameraX, cameraY, cameraZ);
+                yield true;
+            }
+            case JUPITER -> {
+                new ModWeatherRenderer(new Identifier(ModReferences.modId, "textures/sky/jupiter/rain.png")).render(level, ticks, tickDelta, manager, cameraX, cameraY, cameraZ);
+                yield true;
+            }
+            case URANUS -> {
+                new ModWeatherRenderer(new Identifier(ModReferences.modId, "textures/sky/uranus/rain.png")).render(level, ticks, tickDelta, manager, cameraX, cameraY, cameraZ);
+                yield true;
+            }
+            case NEPTUNE -> {
+                new ModWeatherRenderer(new Identifier(ModReferences.modId, "textures/sky/neptune/rain.png")).render(level, ticks, tickDelta, manager, cameraX, cameraY, cameraZ);
                 yield true;
             }
         };

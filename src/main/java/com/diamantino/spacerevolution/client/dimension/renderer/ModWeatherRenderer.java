@@ -20,9 +20,13 @@ import java.util.Random;
 @Environment(EnvType.CLIENT)
 public class ModWeatherRenderer {
 
-    private static final Identifier VENUS_RAIN_TEXTURE = new Identifier(ModReferences.modId, "textures/sky/venus/rain.png");
+    private final Identifier rainTexture;
 
-    public static void render(ClientWorld level, int ticks, float tickDelta, TextureManager manager, double cameraX, double cameraY, double cameraZ) {
+    public ModWeatherRenderer(Identifier rainTexture) {
+        this.rainTexture = rainTexture;
+    }
+
+    public void render(ClientWorld level, int ticks, float tickDelta, TextureManager manager, double cameraX, double cameraY, double cameraZ) {
 
         MinecraftClient minecraft = MinecraftClient.getInstance();
         WorldRenderer renderer = minecraft.worldRenderer;
@@ -80,7 +84,7 @@ public class ModWeatherRenderer {
                                 if (m != 0) {
 
                                     m = 0;
-                                    RenderSystem.setShaderTexture(0, VENUS_RAIN_TEXTURE);
+                                    RenderSystem.setShaderTexture(0, rainTexture);
                                     bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE_COLOR);
                                 }
 
