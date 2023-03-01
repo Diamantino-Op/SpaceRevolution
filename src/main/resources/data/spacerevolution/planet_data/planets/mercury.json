@@ -6,6 +6,7 @@
   "orbit_world": "spacerevolution:mercury_orbit",
   "rocket_tier": 3,
   "gravity": 3.7,
+  "pressure": 0,
   "has_atmosphere": false,
   "days_in_year": 88,
   "temperature": 167,

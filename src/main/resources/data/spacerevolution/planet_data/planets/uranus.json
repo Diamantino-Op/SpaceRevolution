@@ -1,0 +1,17 @@
+{
+  "translation": "gui.spacerevolution.text.uranus",
+  "galaxy": "spacerevolution:milky_way",
+  "solar_system": "spacerevolution:solar_system",
+  "world": "spacerevolution:uranus",
+  "orbit_world": "spacerevolution:uranus_orbit",
+  "rocket_tier": 7,
+  "gravity": 8.96,
+  "pressure": 1000000,
+  "has_atmosphere": true,
+  "days_in_year": 30687,
+  "temperature": -195,
+  "solar_power": 2,
+  "orbit_solar_power": 11,
+  "has_oxygen": false,
+  "button_color": "blue"
+}

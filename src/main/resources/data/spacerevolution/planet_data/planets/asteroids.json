@@ -1,0 +1,15 @@
+{
+  "translation": "gui.spacerevolution.text.asteroids",
+  "galaxy": "spacerevolution:milky_way",
+  "solar_system": "spacerevolution:solar_system",
+  "world": "spacerevolution:asteroids",
+  "rocket_tier": 4,
+  "gravity": 0.01,
+  "has_atmosphere": true,
+  "days_in_year": 0,
+  "temperature": -270,
+  "solar_power": 14,
+  "orbit_solar_power": 14,
+  "has_oxygen": false,
+  "button_color": "grey"
+}

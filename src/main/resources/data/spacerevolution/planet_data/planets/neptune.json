@@ -1,0 +1,17 @@
+{
+  "translation": "gui.spacerevolution.text.neptune",
+  "galaxy": "spacerevolution:milky_way",
+  "solar_system": "spacerevolution:solar_system",
+  "world": "spacerevolution:neptune",
+  "orbit_world": "spacerevolution:neptune_orbit",
+  "rocket_tier": 8,
+  "gravity": 11.14,
+  "pressure": 100000,
+  "has_atmosphere": true,
+  "days_in_year": 60190,
+  "temperature": -200,
+  "solar_power": 2,
+  "orbit_solar_power": 10,
+  "has_oxygen": false,
+  "button_color": "light_blue"
+}

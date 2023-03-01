@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 import java.util.Optional;
 
 // CREDIT: https://github.com/terrarium-earth/Ad-Astra
-public record Planet(String translation, Identifier galaxy, Identifier solarSystem, RegistryKey<World> level, RegistryKey<World> orbitWorld, RegistryKey<World> parentWorld, int rocketTier, float gravity, boolean hasAtmosphere, int daysInYear, float temperature, long solarPower, long orbitSolarPower, boolean hasOxygen, ButtonColor buttonColor) {
+public record Planet(String translation, Identifier galaxy, Identifier solarSystem, RegistryKey<World> level, RegistryKey<World> orbitWorld, RegistryKey<World> parentWorld, int rocketTier, float gravity, float pressure, boolean hasAtmosphere, int daysInYear, float temperature, long solarPower, long orbitSolarPower, boolean hasOxygen, ButtonColor buttonColor) {
     public static final Codec<Planet> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             Codec.STRING.fieldOf("translation").forGetter(Planet::translation),
             Identifier.CODEC.fieldOf("galaxy").forGetter(Planet::galaxy),
@@ -20,6 +20,7 @@ public record Planet(String translation, Identifier galaxy, Identifier solarSyst
             RegistryKey.createCodec(RegistryKeys.WORLD).optionalFieldOf("parent_world").forGetter(Planet::getParentLevel),
             Codec.INT.fieldOf("rocket_tier").forGetter(Planet::rocketTier),
             Codec.FLOAT.fieldOf("gravity").forGetter(Planet::gravity),
+            Codec.FLOAT.fieldOf("pressure").forGetter(Planet::pressure),
             Codec.BOOL.fieldOf("has_atmosphere").forGetter(Planet::hasAtmosphere),
             Codec.INT.fieldOf("days_in_year").forGetter(Planet::daysInYear),
             Codec.FLOAT.fieldOf("temperature").forGetter(Planet::temperature),
@@ -29,8 +30,8 @@ public record Planet(String translation, Identifier galaxy, Identifier solarSyst
             ButtonColor.CODEC.fieldOf("button_color").forGetter(Planet::buttonColor)
     ).apply(instance, Planet::new));
 
-    public Planet(String translation, Identifier galaxy, Identifier solarSystem, RegistryKey<World> level, Optional<RegistryKey<World>> orbitWorld, Optional<RegistryKey<World>> parentWorld, int rocketTier, float gravity, boolean hasAtmosphere, int daysInYear, float temperature, long solarPower, long orbitSolarPower, boolean hasOxygen, ButtonColor buttonColor) {
-        this(translation, galaxy, solarSystem, level, orbitWorld.orElse(null), parentWorld.orElse(null), rocketTier, gravity, hasAtmosphere, daysInYear, temperature, solarPower, orbitSolarPower, hasOxygen, buttonColor);
+    public Planet(String translation, Identifier galaxy, Identifier solarSystem, RegistryKey<World> level, Optional<RegistryKey<World>> orbitWorld, Optional<RegistryKey<World>> parentWorld, int rocketTier, float gravity, float pressure, boolean hasAtmosphere, int daysInYear, float temperature, long solarPower, long orbitSolarPower, boolean hasOxygen, ButtonColor buttonColor) {
+        this(translation, galaxy, solarSystem, level, orbitWorld.orElse(null), parentWorld.orElse(null), rocketTier, gravity, pressure, hasAtmosphere, daysInYear, temperature, solarPower, orbitSolarPower, hasOxygen, buttonColor);
     }
 
     private Optional<RegistryKey<World>> getParentLevel() {

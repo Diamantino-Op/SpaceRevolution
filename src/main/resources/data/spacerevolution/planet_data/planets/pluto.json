@@ -1,0 +1,17 @@
+{
+  "translation": "gui.spacerevolution.text.pluto",
+  "galaxy": "spacerevolution:milky_way",
+  "solar_system": "spacerevolution:solar_system",
+  "world": "spacerevolution:pluto",
+  "orbit_world": "spacerevolution:pluto_orbit",
+  "rocket_tier": 9,
+  "gravity": 0.7,
+  "pressure": 0.000001,
+  "has_atmosphere": true,
+  "days_in_year": 90520,
+  "temperature": -223,
+  "solar_power": 9,
+  "orbit_solar_power": 9,
+  "has_oxygen": false,
+  "button_color": "red"
+}

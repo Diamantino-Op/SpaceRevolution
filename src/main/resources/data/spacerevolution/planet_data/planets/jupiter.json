@@ -1,0 +1,17 @@
+{
+  "translation": "gui.spacerevolution.text.jupiter",
+  "galaxy": "spacerevolution:milky_way",
+  "solar_system": "spacerevolution:solar_system",
+  "world": "spacerevolution:jupiter",
+  "orbit_world": "spacerevolution:jupiter_orbit",
+  "rocket_tier": 5,
+  "gravity": 24.77,
+  "pressure": 100000000,
+  "has_atmosphere": true,
+  "days_in_year": 4332,
+  "temperature": -110,
+  "solar_power": 1,
+  "orbit_solar_power": 13,
+  "has_oxygen": false,
+  "button_color": "orange"
+}

@@ -1,0 +1,17 @@
+{
+  "translation": "gui.spacerevolution.text.saturn",
+  "galaxy": "spacerevolution:milky_way",
+  "solar_system": "spacerevolution:solar_system",
+  "world": "spacerevolution:saturn",
+  "orbit_world": "spacerevolution:saturn_orbit",
+  "rocket_tier": 6,
+  "gravity": 10.44,
+  "pressure": 140000,
+  "has_atmosphere": true,
+  "days_in_year": 10759,
+  "temperature": -140,
+  "solar_power": 1,
+  "orbit_solar_power": 12,
+  "has_oxygen": false,
+  "button_color": "yellow"
+}
