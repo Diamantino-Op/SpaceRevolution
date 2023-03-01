@@ -1,0 +1,17 @@
+{
+  "translation": "gui.spacerevolution.text.moon",
+  "galaxy": "spacerevolution:milky_way",
+  "solar_system": "spacerevolution:solar_system",
+  "world": "spacerevolution:moon",
+  "orbit_world": "spacerevolution:moon_orbit",
+  "parent_world": "minecraft:overworld",
+  "rocket_tier": 1,
+  "gravity": 1.625,
+  "has_atmosphere": false,
+  "days_in_year": 27,
+  "temperature": -160,
+  "solar_power": 15,
+  "orbit_solar_power": 17,
+  "has_oxygen": false,
+  "button_color": "grey"
+}

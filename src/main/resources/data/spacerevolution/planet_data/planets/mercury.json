@@ -1,0 +1,16 @@
+{
+  "translation": "gui.spacerevolution.text.mercury",
+  "galaxy": "spacerevolution:milky_way",
+  "solar_system": "spacerevolution:solar_system",
+  "world": "spacerevolution:mercury",
+  "orbit_world": "spacerevolution:mercury_orbit",
+  "rocket_tier": 3,
+  "gravity": 3.7,
+  "has_atmosphere": false,
+  "days_in_year": 88,
+  "temperature": 167,
+  "solar_power": 19,
+  "orbit_solar_power": 21,
+  "has_oxygen": false,
+  "button_color": "dark_red"
+}

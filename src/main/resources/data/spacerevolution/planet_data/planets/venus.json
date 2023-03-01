@@ -1,0 +1,16 @@
+{
+  "translation": "gui.spacerevolution.text.venus",
+  "galaxy": "spacerevolution:milky_way",
+  "solar_system": "spacerevolution:solar_system",
+  "world": "spacerevolution:venus",
+  "orbit_world": "spacerevolution:venus_orbit",
+  "rocket_tier": 3,
+  "gravity": 8.87,
+  "has_atmosphere": true,
+  "days_in_year": 225,
+  "temperature": 464,
+  "solar_power": 6,
+  "orbit_solar_power": 18,
+  "has_oxygen": false,
+  "button_color": "orange"
+}
