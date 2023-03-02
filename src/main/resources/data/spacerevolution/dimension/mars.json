@@ -1,0 +1,36 @@
+{
+  "type": "spacerevolution:mars",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "spacerevolution:mars",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "spacerevolution:mars_plains",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0.2,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "spacerevolution:mars_mountains",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        }
+      ]
+    }
+  }
+}

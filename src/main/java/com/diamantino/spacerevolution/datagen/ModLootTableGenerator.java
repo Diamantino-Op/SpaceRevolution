@@ -16,6 +16,39 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
     public void generate() {
         generateOreDrops();
         generateDropSelfDrops();
+        generateCobbleDrops();
+    }
+
+    private void generateCobbleDrops() {
+        addDrop(ModBlocks.mercuryStoneBlock, ModBlocks.mercuryCobblestoneBlock);
+        addDropWithSilkTouch(ModBlocks.mercuryStoneBlock);
+
+        addDrop(ModBlocks.venusStoneBlock, ModBlocks.venusCobblestoneBlock);
+        addDropWithSilkTouch(ModBlocks.venusStoneBlock);
+
+        addDrop(ModBlocks.moonStoneBlock, ModBlocks.moonCobblestoneBlock);
+        addDropWithSilkTouch(ModBlocks.moonStoneBlock);
+
+        addDrop(ModBlocks.marsStoneBlock, ModBlocks.marsCobblestoneBlock);
+        addDropWithSilkTouch(ModBlocks.marsStoneBlock);
+
+        addDrop(ModBlocks.jupiterStoneBlock, ModBlocks.jupiterCobblestoneBlock);
+        addDropWithSilkTouch(ModBlocks.jupiterStoneBlock);
+
+        addDrop(ModBlocks.saturnStoneBlock, ModBlocks.saturnCobblestoneBlock);
+        addDropWithSilkTouch(ModBlocks.saturnStoneBlock);
+
+        addDrop(ModBlocks.uranusStoneBlock, ModBlocks.uranusCobblestoneBlock);
+        addDropWithSilkTouch(ModBlocks.uranusStoneBlock);
+
+        addDrop(ModBlocks.neptuneStoneBlock, ModBlocks.neptuneCobblestoneBlock);
+        addDropWithSilkTouch(ModBlocks.neptuneStoneBlock);
+
+        addDrop(ModBlocks.plutoRedStoneBlock, ModBlocks.plutoRedCobblestoneBlock);
+        addDropWithSilkTouch(ModBlocks.plutoRedStoneBlock);
+
+        addDrop(ModBlocks.plutoWhiteStoneBlock, ModBlocks.plutoWhiteCobblestoneBlock);
+        addDropWithSilkTouch(ModBlocks.plutoWhiteStoneBlock);
     }
 
     private void generateOreDrops() {

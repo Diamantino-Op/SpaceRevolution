@@ -1,0 +1,11 @@
+{
+  "type": "spacerevolution:jupiter_orbit",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "spacerevolution:space",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "spacerevolution:orbit"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "type": "spacerevolution:mercury",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "spacerevolution:mercury",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "spacerevolution:mercury_plains",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0.2,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "spacerevolution:mercury_mountains",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        }
+      ]
+    }
+  }
+}

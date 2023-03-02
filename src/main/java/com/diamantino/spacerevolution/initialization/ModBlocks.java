@@ -29,39 +29,39 @@ public class ModBlocks {
 
     //Mercury
     public static final Block mercurySurfaceDustBlock = registerGenericBlock("mercury_surface_dust", new Block(FabricBlockSettings.of(Material.AGGREGATE, MapColor.STONE_GRAY).strength(0.5f).sounds(BlockSoundGroup.SAND)), ModItemGroups.blocks);
-    public static final Block mercuryStoneBlock = registerGenericBlock("mercury_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
+    public static final Block mercuryStoneBlock = registerBlock("mercury_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
     public static final Block mercuryCobblestoneBlock = registerGenericBlock("mercury_cobblestone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(2.0f, 6.0f).requiresTool()), ModItemGroups.blocks);
 
     public static final Block venusSandstoneBlock = registerGenericBlock("venus_sandstone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.ORANGE).strength(0.8f).requiresTool()), ModItemGroups.blocks);
-    public static final Block venusStoneBlock = registerGenericBlock("venus_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.ORANGE).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
+    public static final Block venusStoneBlock = registerBlock("venus_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.ORANGE).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
     public static final Block venusCobblestoneBlock = registerGenericBlock("venus_cobblestone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.ORANGE).strength(2.0f, 6.0f).requiresTool()), ModItemGroups.blocks);
 
     public static final Block moonSurfaceDustBlock = registerGenericBlock("moon_surface_dust", new Block(FabricBlockSettings.of(Material.AGGREGATE, MapColor.STONE_GRAY).strength(0.5f).sounds(BlockSoundGroup.SAND)), ModItemGroups.blocks);
-    public static final Block moonStoneBlock = registerGenericBlock("moon_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
+    public static final Block moonStoneBlock = registerBlock("moon_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
     public static final Block moonCobblestoneBlock = registerGenericBlock("moon_cobblestone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(2.0f, 6.0f).requiresTool()), ModItemGroups.blocks);
 
     public static final Block marsSurfaceDustBlock = registerGenericBlock("mars_surface_dust", new Block(FabricBlockSettings.of(Material.AGGREGATE, MapColor.BRIGHT_RED).strength(0.5f).sounds(BlockSoundGroup.SAND)), ModItemGroups.blocks);
-    public static final Block marsStoneBlock = registerGenericBlock("mars_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.BRIGHT_RED).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
+    public static final Block marsStoneBlock = registerBlock("mars_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.BRIGHT_RED).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
     public static final Block marsCobblestoneBlock = registerGenericBlock("mars_cobblestone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.BRIGHT_RED).strength(2.0f, 6.0f).requiresTool()), ModItemGroups.blocks);
 
     public static final Block asteroidBlock = registerGenericBlock("asteroid_block", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
-    public static final Block resourcefulAsteroidBlock = registerGenericBlock("resourceful_asteroid_block", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
+    public static final Block resourcefulAsteroidBlock = registerBlock("resourceful_asteroid_block", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
 
-    public static final Block jupiterStoneBlock = registerGenericBlock("jupiter_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.YELLOW).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
+    public static final Block jupiterStoneBlock = registerBlock("jupiter_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.YELLOW).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
     public static final Block jupiterCobblestoneBlock = registerGenericBlock("jupiter_cobblestone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.YELLOW).strength(2.0f, 6.0f).requiresTool()), ModItemGroups.blocks);
 
-    public static final Block saturnStoneBlock = registerGenericBlock("saturn_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.PALE_YELLOW).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
+    public static final Block saturnStoneBlock = registerBlock("saturn_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.PALE_YELLOW).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
     public static final Block saturnCobblestoneBlock = registerGenericBlock("saturn_cobblestone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.PALE_YELLOW).strength(2.0f, 6.0f).requiresTool()), ModItemGroups.blocks);
 
-    public static final Block uranusStoneBlock = registerGenericBlock("uranus_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
+    public static final Block uranusStoneBlock = registerBlock("uranus_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
     public static final Block uranusCobblestoneBlock = registerGenericBlock("uranus_cobblestone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(2.0f, 6.0f).requiresTool()), ModItemGroups.blocks);
 
-    public static final Block neptuneStoneBlock = registerGenericBlock("neptune_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
+    public static final Block neptuneStoneBlock = registerBlock("neptune_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
     public static final Block neptuneCobblestoneBlock = registerGenericBlock("neptune_cobblestone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.STONE_GRAY).strength(2.0f, 6.0f).requiresTool()), ModItemGroups.blocks);
 
-    public static final Block plutoWhiteStoneBlock = registerGenericBlock("pluto_white_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.WHITE).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
+    public static final Block plutoWhiteStoneBlock = registerBlock("pluto_white_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.WHITE).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
     public static final Block plutoWhiteCobblestoneBlock = registerGenericBlock("pluto_white_cobblestone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.WHITE).strength(2.0f, 6.0f).requiresTool()), ModItemGroups.blocks);
-    public static final Block plutoRedStoneBlock = registerGenericBlock("pluto_red_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.RED).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
+    public static final Block plutoRedStoneBlock = registerBlock("pluto_red_stone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.RED).strength(1.5f, 6.0f).requiresTool()), ModItemGroups.blocks);
     public static final Block plutoRedCobblestoneBlock = registerGenericBlock("pluto_red_cobblestone", new Block(FabricBlockSettings.of(Material.STONE, MapColor.RED).strength(2.0f, 6.0f).requiresTool()), ModItemGroups.blocks);
 
     //Cables
