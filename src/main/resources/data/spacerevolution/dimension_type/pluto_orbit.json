@@ -13,7 +13,7 @@
   "infiniburn": "#minecraft:infiniburn_overworld",
   "min_y": 0,
   "height": 256,
-  "effects": "spacerevolution:earth_orbit",
+  "effects": "spacerevolution:pluto_orbit",
   "monster_spawn_block_light_limit": 0,
   "monster_spawn_light_level": {
     "type": "minecraft:uniform",
