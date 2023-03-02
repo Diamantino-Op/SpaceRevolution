@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "spacerevolution:block/venus_sandstone"
+    "all": "spacerevolution:block/saturn_stone"
   }
 }

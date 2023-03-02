@@ -29,6 +29,10 @@ public class ModModelProvider extends FabricModelProvider {
         for (Block block : ModBlocks.genericBlocks) {
             blockStateModelGenerator.registerSimpleCubeAll(block);
         }
+
+        for (Block block : ModBlocks.stoneBlocks) {
+            blockStateModelGenerator.registerSimpleCubeAll(block);
+        }
     }
 
     public void generateCable(Block block, BlockStateModelGenerator blockStateModelGenerator) {

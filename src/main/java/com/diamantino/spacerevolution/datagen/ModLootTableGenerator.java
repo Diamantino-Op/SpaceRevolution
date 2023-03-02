@@ -60,9 +60,9 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
             addDrop(block);
         }
 
-        List<Block> genericBlocks = new java.util.ArrayList<>(ModBlocks.genericBlocks.stream().toList());
+        addDrop(ModBlocks.venusSandstoneBlock);
 
-        genericBlocks.remove(ModBlocks.resourcefulAsteroidBlock);
+        List<Block> genericBlocks = new java.util.ArrayList<>(ModBlocks.genericBlocks.stream().toList());
 
         for (Block block : genericBlocks) {
             addDrop(block);
