@@ -6,6 +6,7 @@
   "orbit_world": "spacerevolution:mars_orbit",
   "rocket_tier": 2,
   "gravity": 3.72076,
+  "pressure": 0.011,
   "has_atmosphere": true,
   "days_in_year": 687,
   "temperature": -65,

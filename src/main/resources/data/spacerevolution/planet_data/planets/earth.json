@@ -6,6 +6,7 @@
   "orbit_world": "spacerevolution:earth_orbit",
   "rocket_tier": 1,
   "gravity": 9.806,
+  "pressure": 1,
   "has_atmosphere": true,
   "days_in_year": 365,
   "temperature": 15,

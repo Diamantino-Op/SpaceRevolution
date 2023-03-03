@@ -6,6 +6,7 @@
   "orbit_world": "spacerevolution:venus_orbit",
   "rocket_tier": 3,
   "gravity": 8.87,
+  "pressure": 92,
   "has_atmosphere": true,
   "days_in_year": 225,
   "temperature": 464,
