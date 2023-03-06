@@ -38,9 +38,6 @@ public class ModSkyRenderer {
     }
 
     public void render(ClientWorld level, int ticks, float tickDelta, MatrixStack poseStack, Camera camera, Matrix4f projectionMatrix, boolean foggy) {
-
-        ModReferences.logger.warn("Level: " + level + ", Camera: " + camera);
-
         BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
         MinecraftClient minecraft = MinecraftClient.getInstance();
 

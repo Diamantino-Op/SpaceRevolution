@@ -3,6 +3,7 @@ package com.diamantino.spacerevolution.mixin.client;
 import com.diamantino.spacerevolution.client.dimension.ModDimensionEffects;
 import com.diamantino.spacerevolution.client.dimension.renderer.DimensionEffects;
 import com.diamantino.spacerevolution.initialization.ModParticleTypes;
+import com.diamantino.spacerevolution.initialization.ModReferences;
 import com.diamantino.spacerevolution.utils.ModUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

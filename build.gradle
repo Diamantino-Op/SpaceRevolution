@@ -23,6 +23,8 @@ dependencies {
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
+    modImplementation "com.ptsmods:devlogin:3.1.1"
+
     modImplementation("curse.maven:techreborn-233564:4142163")
     modImplementation("curse.maven:reborncore-237903:4142164")
 
@@ -55,6 +57,8 @@ sourceSets {
 }
 
 loom {
+    accessWidenerPath = file("src/main/resources/spacerevolution.accesswidener")
+
     runs {
         datagen {
             server()

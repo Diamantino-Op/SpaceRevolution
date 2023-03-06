@@ -8,12 +8,16 @@ import com.teamresourceful.resourcefullib.common.color.Color;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gl.ShaderProgram;
+import net.minecraft.client.gl.VertexBuffer;
 import net.minecraft.client.render.*;
+import net.minecraft.client.render.DimensionEffects;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
 import org.joml.Matrix4f;
@@ -43,7 +47,6 @@ public class SkyUtil {
         RenderSystem.depthMask(false);
 
         RenderSystem.setShaderColor(f, g, h, 1.0f);
-        levelRenderer.renderSky(poseStack, projectionMatrix, tickDelta, camera, false, null);
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
 
