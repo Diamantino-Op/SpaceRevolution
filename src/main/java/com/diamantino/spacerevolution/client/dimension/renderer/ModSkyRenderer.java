@@ -64,7 +64,7 @@ public class ModSkyRenderer {
             Vector3f rotation = skyObject.rotation();
             switch (skyObject.renderType()) {
                 case STATIC -> {} // Do not modify the scale or rotation
-                case DYNAMIC -> rotation = new Vector3f(level.getTimeOfDay() * 360.0f + rotation.x(), rotation.y(), rotation.z());
+                case DYNAMIC -> rotation = new Vector3f(level.getSkyAngle(tickDelta) * 360.0f + rotation.x(), rotation.y(), rotation.z());
                 case SCALING -> scale *= SkyUtil.getScale();
                 case DEBUG -> rotation = new Vector3f(60, 0, 0); // Test things without restarting Minecraft
             }
@@ -76,7 +76,7 @@ public class ModSkyRenderer {
 
     private VertexBuffer renderStars(ClientWorld level, MatrixStack poseStack, float tickDelta, BufferBuilder bufferBuilder, int stars, PlanetSkyRenderer.StarsRenderer starsRenderer, Matrix4f projectionMatrix) {
 
-        SkyUtil.startRendering(poseStack, new Vector3f(-30.0f, 0.0f, level.getTimeOfDay() * 360.0f));
+        SkyUtil.startRendering(poseStack, new Vector3f(-30.0f, 0.0f, level.getSkyAngle(tickDelta) * 360.0f));
         RenderSystem.setShader(GameRenderer::getPositionColorProgram);
 
         createStarBuffer(bufferBuilder, stars);
