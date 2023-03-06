@@ -4,6 +4,7 @@ import com.diamantino.spacerevolution.client.resourcepack.PlanetSkyRenderer;
 import com.diamantino.spacerevolution.initialization.ModReferences;
 import com.diamantino.spacerevolution.utils.ColourUtils;
 import net.minecraft.client.render.Camera;
+import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.texture.TextureManager;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.world.ClientWorld;
@@ -12,7 +13,7 @@ import net.minecraft.util.math.Vec3d;
 import org.joml.Matrix4f;
 
 // CREDIT: https://github.com/terrarium-earth/Ad-Astra
-public class DimensionEffects extends net.minecraft.client.render.DimensionEffects implements DimensionRenderer {
+public class DimensionEffects extends net.minecraft.client.render.DimensionEffects {
     private final PlanetSkyRenderer renderer;
     private final ModSkyRenderer skyRenderer;
 
@@ -31,7 +32,6 @@ public class DimensionEffects extends net.minecraft.client.render.DimensionEffec
         return super.getFogColorOverride(skyAngle, tickDelta);
     }
 
-    @Override
     public boolean renderClouds(ClientWorld level, int ticks, float tickDelta, MatrixStack poseStack, double cameraX, double cameraY, double cameraZ, Matrix4f projectionMatrix) {
         return switch (renderer.cloudEffects()) {
             case NONE -> true;
@@ -42,6 +42,10 @@ public class DimensionEffects extends net.minecraft.client.render.DimensionEffec
             }
             case JUPITER -> {
                 new ModCloudRenderer(new Identifier(ModReferences.modId, "textures/sky/jupiter/clouds.png")).render(level, ticks, tickDelta, poseStack, cameraX, cameraY, cameraZ, projectionMatrix);
+                yield true;
+            }
+            case SATURN -> {
+                new ModCloudRenderer(new Identifier(ModReferences.modId, "textures/sky/saturn/clouds.png")).render(level, ticks, tickDelta, poseStack, cameraX, cameraY, cameraZ, projectionMatrix);
                 yield true;
             }
             case URANUS -> {
@@ -55,25 +59,24 @@ public class DimensionEffects extends net.minecraft.client.render.DimensionEffec
         };
     }
 
-    @Override
     public boolean shouldRenderClouds() {
         return renderer.cloudEffects() != PlanetSkyRenderer.CloudEffects.VANILLA;
     }
 
-    @Override
     public boolean renderSky(ClientWorld level, int ticks, float tickDelta, MatrixStack poseStack, Camera camera, Matrix4f projectionMatrix, boolean foggy, Runnable setupFog) {
-        setupFog.run();
+        if (setupFog != null)
+            setupFog.run();
+
         skyRenderer.render(level, ticks, tickDelta, poseStack, camera, projectionMatrix, foggy);
+        
         return true;
     }
 
-    @Override
     public boolean shouldRenderSky() {
         return true;
     }
 
-    @Override
-    public boolean renderSnowAndRain(ClientWorld level, int ticks, float tickDelta, TextureManager manager, double cameraX, double cameraY, double cameraZ) {
+    public boolean renderSnowAndRain(ClientWorld level, int ticks, float tickDelta, LightmapTextureManager manager, double cameraX, double cameraY, double cameraZ) {
         return switch (renderer.weatherEffects()) {
             case NONE -> true;
             case VANILLA -> false;
@@ -83,6 +86,10 @@ public class DimensionEffects extends net.minecraft.client.render.DimensionEffec
             }
             case JUPITER -> {
                 new ModWeatherRenderer(new Identifier(ModReferences.modId, "textures/sky/jupiter/rain.png")).render(level, ticks, tickDelta, manager, cameraX, cameraY, cameraZ);
+                yield true;
+            }
+            case SATURN -> {
+                new ModWeatherRenderer(new Identifier(ModReferences.modId, "textures/sky/saturn/rain.png")).render(level, ticks, tickDelta, manager, cameraX, cameraY, cameraZ);
                 yield true;
             }
             case URANUS -> {
@@ -96,7 +103,6 @@ public class DimensionEffects extends net.minecraft.client.render.DimensionEffec
         };
     }
 
-    @Override
     public boolean shouldRenderSnowAndRain() {
         return renderer.weatherEffects() != PlanetSkyRenderer.WeatherEffects.VANILLA;
     }

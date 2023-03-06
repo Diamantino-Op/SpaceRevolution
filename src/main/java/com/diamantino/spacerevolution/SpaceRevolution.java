@@ -26,6 +26,7 @@ public class SpaceRevolution implements ModInitializer {
         ModRecipes.registerRecipes();
         ModMessages.registerC2SPackets();
         ModFeatures.registerModFeatures();
+        ModParticleTypes.registerModParticleTypes();
         //TODO: Add asteroid entities that when hit the ground, they spawn a crater with the roid at the center
 
         onRegisterReloadListeners((id, listener) -> ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new IdentifiableResourceReloadListener() {

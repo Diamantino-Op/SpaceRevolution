@@ -1,7 +1,7 @@
 package com.diamantino.spacerevolution.client.resourcepack;
 
 import com.diamantino.spacerevolution.client.SpaceRevolutionClient;
-import com.diamantino.spacerevolution.client.dimension.ModSkies;
+import com.diamantino.spacerevolution.client.dimension.ModDimensionEffects;
 import com.diamantino.spacerevolution.initialization.ModReferences;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -9,20 +9,16 @@ import com.google.gson.JsonObject;
 import com.mojang.serialization.JsonOps;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.resource.SynchronousResourceReloader;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
-import net.minecraft.util.profiler.Profiler;
 
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 
 // CREDIT: https://github.com/terrarium-earth/Ad-Astra
 @Environment(EnvType.CLIENT)
@@ -109,6 +105,6 @@ public class PlanetResources implements SynchronousResourceReloader {
         SpaceRevolutionClient.solarSystems = solarSystems;
         SpaceRevolutionClient.planetRings = planetRings;
         SpaceRevolutionClient.galaxies = galaxies;
-        ModSkies.register();
+        ModDimensionEffects.register();
     }
 }

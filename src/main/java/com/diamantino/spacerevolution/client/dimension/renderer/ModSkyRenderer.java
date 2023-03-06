@@ -1,6 +1,7 @@
 package com.diamantino.spacerevolution.client.dimension.renderer;
 
 import com.diamantino.spacerevolution.client.resourcepack.PlanetSkyRenderer;
+import com.diamantino.spacerevolution.initialization.ModReferences;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -37,6 +38,8 @@ public class ModSkyRenderer {
     }
 
     public void render(ClientWorld level, int ticks, float tickDelta, MatrixStack poseStack, Camera camera, Matrix4f projectionMatrix, boolean foggy) {
+
+        ModReferences.logger.warn("Level: " + level + ", Camera: " + camera);
 
         BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
         MinecraftClient minecraft = MinecraftClient.getInstance();

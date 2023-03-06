@@ -26,7 +26,7 @@ public class ModWeatherRenderer {
         this.rainTexture = rainTexture;
     }
 
-    public void render(ClientWorld level, int ticks, float tickDelta, TextureManager manager, double cameraX, double cameraY, double cameraZ) {
+    public void render(ClientWorld level, int ticks, float tickDelta, LightmapTextureManager manager, double cameraX, double cameraY, double cameraZ) {
 
         MinecraftClient minecraft = MinecraftClient.getInstance();
         WorldRenderer renderer = minecraft.worldRenderer;
@@ -80,7 +80,7 @@ public class ModWeatherRenderer {
                             mutable.set(p, u, o);
                             float y;
                             float ac;
-                            if (biome.getTemperature() > 0.5f) {
+                            if (biome.doesNotSnow(mutable)) {
                                 if (m != 0) {
 
                                     m = 0;
