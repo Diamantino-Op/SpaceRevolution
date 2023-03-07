@@ -27,6 +27,8 @@ public class SpaceRevolution implements ModInitializer {
         ModMessages.registerC2SPackets();
         ModFeatures.registerModFeatures();
         ModParticleTypes.registerModParticleTypes();
+        ModEntityTypes.registerModEntityTypes();
+        ModDamageSources.registerModEntityTypes();
         //TODO: Add asteroid entities that when hit the ground, they spawn a crater with the roid at the center
         //TODO: Remove snow from planets that don't have precipitations
 

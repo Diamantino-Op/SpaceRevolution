@@ -5,36 +5,14 @@ import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
+import org.joml.Vector3f;
 
 public class AsteroidEntityModel extends EntityModel<AsteroidEntity> {
 	private final ModelPart Asteroid;
-	private final ModelPart Layer1;
-	private final ModelPart Layer2;
-	private final ModelPart Layer3;
-	private final ModelPart Layer4;
-	private final ModelPart Layer5;
-	private final ModelPart Layer6;
-	private final ModelPart Layer7;
-	private final ModelPart Layer8;
-	private final ModelPart Layer9;
-	private final ModelPart Layer10;
-	private final ModelPart Layer11;
-	private final ModelPart Layer12;
+	private boolean hasScaled = false;
 
 	public AsteroidEntityModel(ModelPart root) {
 		this.Asteroid = root.getChild("Asteroid");
-		this.Layer1 = root.getChild("Layer1");
-		this.Layer2 = root.getChild("Layer2");
-		this.Layer3 = root.getChild("Layer3");
-		this.Layer4 = root.getChild("Layer4");
-		this.Layer5 = root.getChild("Layer5");
-		this.Layer6 = root.getChild("Layer6");
-		this.Layer7 = root.getChild("Layer7");
-		this.Layer8 = root.getChild("Layer8");
-		this.Layer9 = root.getChild("Layer9");
-		this.Layer10 = root.getChild("Layer10");
-		this.Layer11 = root.getChild("Layer11");
-		this.Layer12 = root.getChild("Layer12");
 	}
 
 	public static TexturedModelData getTexturedModelData() {
@@ -683,23 +661,17 @@ public class AsteroidEntityModel extends EntityModel<AsteroidEntity> {
 
 	@Override
 	public void setAngles(AsteroidEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		Asteroid.setAngles(entity.yaw, entity.pitch, 0);
 
+		if (!hasScaled) {
+			Asteroid.scale(new Vector3f(6));
+
+			hasScaled = true;
+		}
 	}
 
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
 		Asteroid.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		Layer1.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		Layer2.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		Layer3.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		Layer4.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		Layer5.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		Layer6.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		Layer7.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		Layer8.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		Layer9.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		Layer10.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		Layer11.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		Layer12.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
 	}
 }
