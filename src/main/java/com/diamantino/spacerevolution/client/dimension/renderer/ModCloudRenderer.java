@@ -67,7 +67,7 @@ public class ModCloudRenderer {
                     renderer.getCloudsBuffer().close();
                 }
                 renderer.setCloudsBuffer(new VertexBuffer());
-                BufferBuilder.BuiltBuffer builtBuffer = renderer.invokeRenderClouds(bufferBuilder, l, m, n, colour);
+                BufferBuilder.BuiltBuffer builtBuffer = renderer.invokeRenderClouds(bufferBuilder, i, j, k, colour);
                 renderer.getCloudsBuffer().bind();
                 renderer.getCloudsBuffer().upload(builtBuffer);
                 VertexBuffer.unbind();

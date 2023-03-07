@@ -6,7 +6,7 @@
     "colored_stars": false,
     "daylight_visible": false
   },
-  "sunset_color": "vanilla",
+  "sunset_color": "none",
   "dimension_effects": {
     "type": "foggy_reversed"
   },

@@ -107,7 +107,7 @@ public class WorldRendererMixin {
                     for (int j = 0; j < i; ++j) {
                         int k = randomGenerator.nextInt(21) - 10;
                         int l = randomGenerator.nextInt(21) - 10;
-                        BlockPos blockPos3 = levelView.getTopPosition(Heightmap.Type.MOTION_BLOCKING, blockPos.offset(Direction.fromVector(k, 0, l)));
+                        BlockPos blockPos3 = levelView.getTopPosition(Heightmap.Type.MOTION_BLOCKING, blockPos.add(k, 0, l));
                         Biome biome = levelView.getBiome(blockPos3).value();
                         if (blockPos3.getY() > levelView.getBottomY() && blockPos3.getY() <= blockPos.getY() + 10 && blockPos3.getY() >= blockPos.getY() - 10 && biome.getPrecipitation() == Biome.Precipitation.RAIN && biome.doesNotSnow(blockPos3)) {
                             blockPos2 = blockPos3.down();

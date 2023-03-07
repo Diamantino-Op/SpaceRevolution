@@ -50,7 +50,7 @@ public class SkyUtil {
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
 
-        renderColouring(colourType, bufferBuilder, poseStack, level, tickDelta, level.getTimeOfDay(), sunsetAngle);
+        renderColouring(colourType, bufferBuilder, poseStack, level, tickDelta, level.getSkyAngle(tickDelta), sunsetAngle);
         RenderSystem.enableTexture();
         RenderSystem.blendFuncSeparate(GlStateManager.SrcFactor.SRC_ALPHA, GlStateManager.DstFactor.ONE, GlStateManager.SrcFactor.ONE, GlStateManager.DstFactor.ZERO);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -191,8 +191,8 @@ public class SkyUtil {
     }
 
     public static void renderColouring(PlanetSkyRenderer.SunsetColour type, BufferBuilder bufferBuilder, MatrixStack poseStack, ClientWorld level, float tickDelta, float timeOfDay, int sunsetAngle) {
-
         float[] fogColours = switch (type) {
+            case NONE -> new float[]{0, 0, 0, 0};
             case VANILLA -> level.getDimensionEffects().getFogColorOverride(timeOfDay, tickDelta);
             case MARS -> getMarsColour(timeOfDay);
         };

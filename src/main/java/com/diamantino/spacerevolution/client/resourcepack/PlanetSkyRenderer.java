@@ -44,6 +44,7 @@ public record PlanetSkyRenderer(RegistryKey<World> dimension, PlanetSkyRenderer.
 
     // Changes the colour of the sunset and sunrise.
     public enum SunsetColour {
+        NONE,
         VANILLA, // Vanilla.
         MARS; // Custom pink-ish red hue.
 

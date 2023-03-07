@@ -32,6 +32,7 @@ public class SpaceAsteroidFeature extends Feature<DefaultFeatureConfig> {
         pool.add(Blocks.LAPIS_ORE.getDefaultState(), 2);
         pool.add(Blocks.DIAMOND_ORE.getDefaultState(), 1);
         pool.add(Blocks.EMERALD_ORE.getDefaultState(), 1);
+        pool.add(ModBlocks.resourcefulAsteroidBlock.getDefaultState(), 10);
 
         ASTEROID_STONE = SimpleBlockStateProvider.of(ModBlocks.asteroidBlock.getDefaultState());
         ASTEROID_ORE = new WeightedBlockStateProvider(pool);

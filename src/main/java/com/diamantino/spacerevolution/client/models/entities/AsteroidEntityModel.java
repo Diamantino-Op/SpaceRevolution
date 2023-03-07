@@ -1,12 +1,13 @@
 package com.diamantino.spacerevolution.client.models.entities;
 
+import com.diamantino.spacerevolution.entities.AsteroidEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.Entity;
 
-public class AsteroidEntityModel extends EntityModel<Entity> {
+public class AsteroidEntityModel extends EntityModel<AsteroidEntity> {
+	private final ModelPart Asteroid;
 	private final ModelPart Layer1;
 	private final ModelPart Layer2;
 	private final ModelPart Layer3;
@@ -19,7 +20,9 @@ public class AsteroidEntityModel extends EntityModel<Entity> {
 	private final ModelPart Layer10;
 	private final ModelPart Layer11;
 	private final ModelPart Layer12;
+
 	public AsteroidEntityModel(ModelPart root) {
+		this.Asteroid = root.getChild("Asteroid");
 		this.Layer1 = root.getChild("Layer1");
 		this.Layer2 = root.getChild("Layer2");
 		this.Layer3 = root.getChild("Layer3");
@@ -33,10 +36,14 @@ public class AsteroidEntityModel extends EntityModel<Entity> {
 		this.Layer11 = root.getChild("Layer11");
 		this.Layer12 = root.getChild("Layer12");
 	}
+
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
-		ModelPartData Layer1 = modelPartData.addChild("Layer1", ModelPartBuilder.create()
+
+		ModelPartData Asteroid = modelPartData.addChild("Asteroid", ModelPartBuilder.create(), ModelTransform.pivot(0, 0, 0));
+
+		ModelPartData Layer1 = Asteroid.addChild("Layer1", ModelPartBuilder.create()
 		.uv(0, 0).cuboid(0.0F, -2.0F, 0.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(0.0F, -2.0F, 2.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(0.0F, -2.0F, 4.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
@@ -74,7 +81,7 @@ public class AsteroidEntityModel extends EntityModel<Entity> {
 		.uv(0, 0).cuboid(-2.0F, -2.0F, -6.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(-2.0F, -2.0F, -4.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
 
-		ModelPartData Layer2 = modelPartData.addChild("Layer2", ModelPartBuilder.create()
+		ModelPartData Layer2 = Asteroid.addChild("Layer2", ModelPartBuilder.create()
 		.uv(0, 0).cuboid(-2.0F, -2.0F, -10.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(0.0F, -2.0F, -10.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(-2.0F, -2.0F, 16.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
@@ -141,7 +148,7 @@ public class AsteroidEntityModel extends EntityModel<Entity> {
 		.uv(0, 0).cuboid(2.0F, -2.0F, 10.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)),
 		ModelTransform.pivot(0.0F, 22.0F, -2.0F));
 
-		ModelPartData Layer3 = modelPartData.addChild("Layer3", ModelPartBuilder.create()
+		ModelPartData Layer3 = Asteroid.addChild("Layer3", ModelPartBuilder.create()
 		.uv(0, 0).cuboid(0.0F, -4.0F, -16.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(0.0F, -4.0F, -18.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(-2.0F, -4.0F, -18.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
@@ -196,7 +203,7 @@ public class AsteroidEntityModel extends EntityModel<Entity> {
 		.uv(0, 0).cuboid(-8.0F, -4.0F, 14.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)),
 		ModelTransform.pivot(0.0F, 22.0F, -2.0F));
 
-		ModelPartData Layer4 = modelPartData.addChild("Layer4", ModelPartBuilder.create()
+		ModelPartData Layer4 = Asteroid.addChild("Layer4", ModelPartBuilder.create()
 		.uv(0, 0).cuboid(0.0F, -6.0F, -20.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(-2.0F, -6.0F, -20.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(-2.0F, -6.0F, 22.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
@@ -247,7 +254,7 @@ public class AsteroidEntityModel extends EntityModel<Entity> {
 		.uv(0, 0).cuboid(6.0F, -6.0F, 16.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)),
 		ModelTransform.pivot(0.0F, 22.0F, -2.0F));
 
-		ModelPartData Layer5 = modelPartData.addChild("Layer5", ModelPartBuilder.create()
+		ModelPartData Layer5 = Asteroid.addChild("Layer5", ModelPartBuilder.create()
 		.uv(0, 0).cuboid(-2.0F, -8.0F, 20.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(0.0F, -8.0F, 20.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(0.0F, -8.0F, -26.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
@@ -298,7 +305,7 @@ public class AsteroidEntityModel extends EntityModel<Entity> {
 		.uv(0, 0).cuboid(-8.0F, -8.0F, -20.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)),
 		ModelTransform.pivot(0.0F, 22.0F, 2.0F));
 
-		ModelPartData Layer6 = modelPartData.addChild("Layer6", ModelPartBuilder.create()
+		ModelPartData Layer6 = Asteroid.addChild("Layer6", ModelPartBuilder.create()
 		.uv(0, 0).cuboid(0.0F, -12.0F, 22.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(2.0F, -12.0F, 22.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(4.0F, -12.0F, 20.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
@@ -353,7 +360,7 @@ public class AsteroidEntityModel extends EntityModel<Entity> {
 		.uv(0, 0).cuboid(4.0F, -12.0F, -22.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)),
 		ModelTransform.pivot(0.0F, 24.0F, 0.0F));
 
-		ModelPartData Layer7 = modelPartData.addChild("Layer7", ModelPartBuilder.create()
+		ModelPartData Layer7 = Asteroid.addChild("Layer7", ModelPartBuilder.create()
 		.uv(0, 0).cuboid(0.0F, -12.0F, 22.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(2.0F, -12.0F, 22.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(4.0F, -12.0F, 20.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
@@ -408,7 +415,7 @@ public class AsteroidEntityModel extends EntityModel<Entity> {
 		.uv(0, 0).cuboid(4.0F, -12.0F, -22.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)),
 		ModelTransform.pivot(0.0F, 22.0F, 0.0F));
 
-		ModelPartData Layer8 = modelPartData.addChild("Layer8", ModelPartBuilder.create()
+		ModelPartData Layer8 = Asteroid.addChild("Layer8", ModelPartBuilder.create()
 		.uv(0, 0).cuboid(-2.0F, -8.0F, 20.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(0.0F, -8.0F, 20.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(0.0F, -8.0F, -26.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
@@ -459,7 +466,7 @@ public class AsteroidEntityModel extends EntityModel<Entity> {
 		.uv(0, 0).cuboid(-8.0F, -8.0F, -20.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)),
 		ModelTransform.pivot(0.0F, 16.0F, 2.0F));
 
-		ModelPartData Layer9 = modelPartData.addChild("Layer9", ModelPartBuilder.create()
+		ModelPartData Layer9 = Asteroid.addChild("Layer9", ModelPartBuilder.create()
 		.uv(0, 0).cuboid(0.0F, -6.0F, -20.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(-2.0F, -6.0F, -20.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(-2.0F, -6.0F, 22.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
@@ -510,7 +517,7 @@ public class AsteroidEntityModel extends EntityModel<Entity> {
 		.uv(0, 0).cuboid(6.0F, -6.0F, 16.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)),
 		ModelTransform.pivot(0.0F, 12.0F, -2.0F));
 
-		ModelPartData Layer10 = modelPartData.addChild("Layer10", ModelPartBuilder.create()
+		ModelPartData Layer10 = Asteroid.addChild("Layer10", ModelPartBuilder.create()
 		.uv(0, 0).cuboid(0.0F, -4.0F, -16.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(0.0F, -4.0F, -18.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(-2.0F, -4.0F, -18.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
@@ -565,7 +572,7 @@ public class AsteroidEntityModel extends EntityModel<Entity> {
 		.uv(0, 0).cuboid(-8.0F, -4.0F, 14.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)),
 		ModelTransform.pivot(0.0F, 8.0F, -2.0F));
 
-		ModelPartData Layer11 = modelPartData.addChild("Layer11", ModelPartBuilder.create()
+		ModelPartData Layer11 = Asteroid.addChild("Layer11", ModelPartBuilder.create()
 		.uv(0, 0).cuboid(-2.0F, -2.0F, -10.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(0.0F, -2.0F, -10.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(-2.0F, -2.0F, 16.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
@@ -632,7 +639,7 @@ public class AsteroidEntityModel extends EntityModel<Entity> {
 		.uv(0, 0).cuboid(2.0F, -2.0F, 10.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)),
 		ModelTransform.pivot(0.0F, 4.0F, -2.0F));
 
-		ModelPartData Layer12 = modelPartData.addChild("Layer12", ModelPartBuilder.create()
+		ModelPartData Layer12 = Asteroid.addChild("Layer12", ModelPartBuilder.create()
 		.uv(0, 0).cuboid(0.0F, -2.0F, 0.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(0.0F, -2.0F, 2.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
 		.uv(0, 0).cuboid(0.0F, -2.0F, 4.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
@@ -673,11 +680,15 @@ public class AsteroidEntityModel extends EntityModel<Entity> {
 
 		return TexturedModelData.of(modelData, 16, 16);
 	}
+
 	@Override
-	public void setAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setAngles(AsteroidEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+
 	}
+
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
+		Asteroid.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
 		Layer1.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
 		Layer2.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
 		Layer3.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
