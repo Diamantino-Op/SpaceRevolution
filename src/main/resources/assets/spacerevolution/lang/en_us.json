@@ -8,12 +8,14 @@
   "block.spacerevolution.insulated_gold_cable": "Insulated Gold Cable",
   "block.spacerevolution.silver_cable": "Silver Cable",
   "block.spacerevolution.insulated_silver_cable": "Insulated Silver Cable",
-  "block.spacerevolution.glass_fiber": "Glass Fiber Cable",
-  "block.spacerevolution.plasma": "Plasma Cable",
-  "block.spacerevolution.quantum": "Quantum Cable",
+  "block.spacerevolution.glass_fiber_cable": "Glass Fiber Cable",
+  "block.spacerevolution.plasma_cable": "Plasma Cable",
+  "block.spacerevolution.quantum_cable": "Quantum Cable",
 
   "machine.spacerevolution.crusher.name": "Crusher",
 
   "spacerevolution.tooltip.liquid.amount.with.capacity": "%s / %s mB",
-  "spacerevolution.tooltip.liquid.amount": "%s mB"
+  "spacerevolution.tooltip.liquid.amount": "%s mB",
+
+  "warnings.spacerevolution.asteroid_incoming": "§cAn asteroid is coming in less than 5 minutes!"
 }

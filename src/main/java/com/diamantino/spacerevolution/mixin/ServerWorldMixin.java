@@ -76,6 +76,8 @@ public abstract class ServerWorldMixin {
                 asteroidData.countdownTicks = resetAsteroidCooldown();
 
                 asteroidData.markDirty();
+
+                hasSaidAsteroidWaring = false;
             }
         }
     }
