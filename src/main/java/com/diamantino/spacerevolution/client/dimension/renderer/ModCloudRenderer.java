@@ -1,7 +1,6 @@
 package com.diamantino.spacerevolution.client.dimension.renderer;
 
-import com.diamantino.spacerevolution.initialization.ModReferences;
-import com.diamantino.spacerevolution.mixin.WorldRenderMixin;
+import com.diamantino.spacerevolution.mixin.client.WorldRendererInterfaceMixin;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.EnvType;
@@ -29,7 +28,7 @@ public class ModCloudRenderer {
     public void render(ClientWorld level, int ticks, float tickDelta, MatrixStack poseStack, double cameraX, double cameraY, double cameraZ, Matrix4f projectionMatrix) {
 
         MinecraftClient minecraft = MinecraftClient.getInstance();
-        WorldRenderMixin renderer = (WorldRenderMixin) minecraft.worldRenderer;
+        WorldRendererInterfaceMixin renderer = (WorldRendererInterfaceMixin) minecraft.worldRenderer;
 
         float f = level.getDimensionEffects().getCloudsHeight();
         if (!Float.isNaN(f)) {

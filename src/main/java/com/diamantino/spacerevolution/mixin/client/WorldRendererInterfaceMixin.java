@@ -1,4 +1,4 @@
-package com.diamantino.spacerevolution.mixin;
+package com.diamantino.spacerevolution.mixin.client;
 
 import net.minecraft.client.gl.VertexBuffer;
 import net.minecraft.client.option.CloudRenderMode;
@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(WorldRenderer.class)
-public interface WorldRenderMixin {
+public interface WorldRendererInterfaceMixin {
     @Accessor("ticks")
     int getTicks();
 

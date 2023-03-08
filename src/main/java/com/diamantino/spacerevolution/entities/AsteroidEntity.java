@@ -89,7 +89,7 @@ public class AsteroidEntity extends LivingEntity {
 
     @Override
     public void onPlayerCollision(PlayerEntity player) {
-        super.onPlayerCollision(player);
+        player.damage(ModDamageSources.asteroidImpactDamageSource, 500);
     }
 
     @Override

@@ -1,13 +1,11 @@
 package com.diamantino.spacerevolution.client.dimension.renderer;
 
-import com.diamantino.spacerevolution.initialization.ModReferences;
-import com.diamantino.spacerevolution.mixin.WorldRenderMixin;
+import com.diamantino.spacerevolution.mixin.client.WorldRendererInterfaceMixin;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
-import net.minecraft.client.texture.TextureManager;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -88,7 +86,7 @@ public class ModWeatherRenderer {
                                     bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE_COLOR);
                                 }
 
-                                int x = ((WorldRenderMixin) renderer).getTicks() + p * p * 3121 + p * 45238971 + o * o * 418711 + o * 13761 & 31;
+                                int x = ((WorldRendererInterfaceMixin) renderer).getTicks() + p * p * 3121 + p * 45238971 + o * o * 418711 + o * 13761 & 31;
                                 y = -((float) x + tickDelta) / 32.0f * (3.0f + random.nextFloat());
                                 double z = (double) p + 0.5 - cameraX;
                                 double aa = (double) o + 0.5 - cameraZ;

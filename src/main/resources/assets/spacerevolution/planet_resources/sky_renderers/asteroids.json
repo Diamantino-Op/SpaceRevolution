@@ -24,22 +24,6 @@
         -90.0,
         0.0
       ]
-    },
-    {
-      "texture": "spacerevolution:textures/sky/light.png",
-      "blending": true,
-      "render_type": "scaling",
-      "scale": 3.0,
-      "color": {
-        "r": 255,
-        "g": 153,
-        "b": 204
-      },
-      "rotation": [
-        180.0,
-        180.0,
-        0.0
-      ]
     }
   ]
 }
