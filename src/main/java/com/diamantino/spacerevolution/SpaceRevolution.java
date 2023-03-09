@@ -1,5 +1,6 @@
 package com.diamantino.spacerevolution;
 
+import com.diamantino.spacerevolution.config.SpaceRevolutionCommonConfigs;
 import com.diamantino.spacerevolution.data.PlanetData;
 import com.diamantino.spacerevolution.initialization.*;
 import net.fabricmc.api.ModInitializer;
@@ -29,6 +30,7 @@ public class SpaceRevolution implements ModInitializer {
         ModParticleTypes.registerModParticleTypes();
         ModEntityTypes.registerModEntityTypes();
         ModDamageSources.registerModEntityTypes();
+        SpaceRevolutionCommonConfigs.initModConfigs();
         //TODO: Add asteroid entities that when hit the ground, they spawn a crater with the roid at the center
         //TODO: Remove snow from planets that don't have precipitations
 

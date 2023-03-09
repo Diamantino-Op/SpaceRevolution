@@ -41,6 +41,10 @@ public class Config {
         return Files.exists(this.configFilePath);
     }
 
+    public void initEmptyJson() {
+        this.configJson = new JsonObject();
+    }
+
     public void saveConfigFile() {
         try {
             Files.createDirectories(this.configFilePath.getParent());

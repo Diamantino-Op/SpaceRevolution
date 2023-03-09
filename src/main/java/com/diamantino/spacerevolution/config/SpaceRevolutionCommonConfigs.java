@@ -17,8 +17,11 @@ public class SpaceRevolutionCommonConfigs {
         if (config.configFileExists()) {
             config.loadConfigFile();
 
-
+            config.getFloatValue(orbitLevelGravity);
+            config.getIntValue(atmosphereLeaveLevel);
         } else {
+            config.initEmptyJson();
+
             config.setFloatValue(orbitLevelGravity);
             config.setIntValue(atmosphereLeaveLevel);
 
