@@ -9,15 +9,20 @@ public class SpaceRevolutionCommonConfigs {
 
     //Config values
     public static ConfigValue.FloatValue orbitLevelGravity = new ConfigValue.FloatValue("orbit_level_gravity", 0.0f);
-    public static int atmosphereLeaveLevel = 500;
+    public static ConfigValue.IntValue atmosphereLeaveLevel = new ConfigValue.IntValue("atmosphere_leave_level", 500);
 
     public static void initModConfigs() {
         ModReferences.logger.debug("Initializing ModConfigs for " + ModReferences.modId);
 
         if (config.configFileExists()) {
+            config.loadConfigFile();
+
 
         } else {
+            config.setFloatValue(orbitLevelGravity);
+            config.setIntValue(atmosphereLeaveLevel);
 
+            config.saveConfigFile();
         }
     }
 }

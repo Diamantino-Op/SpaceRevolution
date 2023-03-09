@@ -29,7 +29,6 @@ dependencies {
     modImplementation("curse.maven:reborncore-237903:4142164")
 
     modApi("com.teamresourceful.resourcefullib:resourcefullib-fabric-${project.minecraft_version}:${project.resourcefullib_version}")
-    modApi("com.teamresourceful.resourcefulconfig:resourcefulconfig-fabric-${project.minecraft_version}:${project.resourcefulconfig_version}")
     modApi("com.teamresourceful:yabn:${project.yabn_version}")
 
     include modApi("teamreborn:energy:${project.energy_api_version}") {

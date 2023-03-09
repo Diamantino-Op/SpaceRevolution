@@ -53,81 +53,85 @@ public class Config {
         }
     }
 
-    public int getIntValue(String name) {
-        JsonElement el = this.configJson.get(name);
+    public void getIntValue(ConfigValue.IntValue value) {
+        JsonElement el = this.configJson.get(value.getValueIdentifier());
 
         if (el == null || !el.isJsonPrimitive()) {
-            return 0;
+            value.setValue(0);
+
+            return;
         }
 
-        JsonPrimitive val = el.getAsJsonPrimitive();
-
-        return val.getAsInt();
+        value.setValue(el.getAsJsonPrimitive().getAsInt());
     }
 
-    public long getLongValue(String name) {
-        JsonElement el = this.configJson.get(name);
+    public void getLongValue(ConfigValue.LongValue value) {
+        JsonElement el = this.configJson.get(value.getValueIdentifier());
 
         if (el == null || !el.isJsonPrimitive()) {
-            return 0;
+            value.setValue(0);
+
+            return;
         }
 
-        JsonPrimitive val = el.getAsJsonPrimitive();
-
-        return val.getAsLong();
+        value.setValue(el.getAsJsonPrimitive().getAsLong());
     }
 
-    public float getFloatValue(String name) {
-        JsonElement el = this.configJson.get(name);
+    public void getFloatValue(ConfigValue.FloatValue value) {
+        JsonElement el = this.configJson.get(value.getValueIdentifier());
 
         if (el == null || !el.isJsonPrimitive()) {
-            return 0;
+            value.setValue(0);
+
+            return;
         }
 
-        JsonPrimitive val = el.getAsJsonPrimitive();
-
-        return val.getAsFloat();
+        value.setValue(el.getAsJsonPrimitive().getAsFloat());
     }
 
-    public double getDoubleValue(String name) {
-        JsonElement el = this.configJson.get(name);
+    public void getDoubleValue(ConfigValue.DoubleValue value) {
+        JsonElement el = this.configJson.get(value.getValueIdentifier());
 
         if (el == null || !el.isJsonPrimitive()) {
-            return 0;
+            value.setValue(0);
+
+            return;
         }
 
-        JsonPrimitive val = el.getAsJsonPrimitive();
-
-        return val.getAsDouble();
+        value.setValue(el.getAsJsonPrimitive().getAsDouble());
     }
 
-    public boolean getBooleanValue(String name) {
-        JsonElement el = this.configJson.get(name);
+    public void getBooleanValue(ConfigValue.BooleanValue value) {
+        JsonElement el = this.configJson.get(value.getValueIdentifier());
 
         if (el == null || !el.isJsonPrimitive()) {
-            return false;
+            value.setValue(false);
+
+            return;
         }
 
-        JsonPrimitive val = el.getAsJsonPrimitive();
-
-        return val.getAsBoolean();
+        value.setValue(el.getAsJsonPrimitive().getAsBoolean());
     }
 
-    public String getStringValue(String name) {
-        JsonElement el = this.configJson.get(name);
+    public void getStringValue(ConfigValue.StringValue value) {
+        JsonElement el = this.configJson.get(value.getValueIdentifier());
 
         if (el == null || !el.isJsonPrimitive()) {
-            return "";
+            value.setValue("");
+
+            return;
         }
 
-        return el.getAsJsonPrimitive().getAsString();
+        value.setValue(el.getAsJsonPrimitive().getAsString());
     }
 
-    public List<String> getStringListValue(String name) {
-        JsonElement el = this.configJson.get(name);
+    public void getStringListValue(ConfigValue.StringListValue value) {
+        JsonElement el = this.configJson.get(value.getValueIdentifier());
 
         if (el == null || !el.isJsonArray()) {
-            return Collections.emptyList();
+            value.setValue(Collections.emptyList());
+
+            return;
         }
 
         List<String> list = new ArrayList<>();
@@ -138,7 +142,7 @@ public class Config {
             }
         }
 
-        return list;
+        value.setValue(list);
     }
 
     public void setIntValue(ConfigValue.IntValue value) {
