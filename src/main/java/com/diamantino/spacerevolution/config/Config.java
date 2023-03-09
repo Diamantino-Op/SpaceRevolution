@@ -142,26 +142,32 @@ public class Config {
     }
 
     public void setIntValue(ConfigValue.IntValue value) {
+        this.configJson.addProperty("_comment", value.getComment());
         this.configJson.add(value.getValueIdentifier(), new JsonPrimitive(value.getValue()));
     }
 
     public void setLongValue(ConfigValue.LongValue value) {
+        this.configJson.addProperty("_comment", value.getComment());
         this.configJson.add(value.getValueIdentifier(), new JsonPrimitive(value.getValue()));
     }
 
     public void setFloatValue(ConfigValue.FloatValue value) {
+        this.configJson.addProperty("_comment", value.getComment());
         this.configJson.add(value.getValueIdentifier(), new JsonPrimitive(value.getValue()));
     }
 
     public void setDoubleValue(ConfigValue.DoubleValue value) {
+        this.configJson.addProperty("_comment", value.getComment());
         this.configJson.add(value.getValueIdentifier(), new JsonPrimitive(value.getValue()));
     }
 
     public void setBooleanValue(ConfigValue.BooleanValue value) {
+        this.configJson.addProperty("_comment", value.getComment());
         this.configJson.add(value.getValueIdentifier(), new JsonPrimitive(value.getValue()));
     }
 
     public void setStringValue(ConfigValue.StringValue value) {
+        this.configJson.addProperty("_comment", value.getComment());
         this.configJson.add(value.getValueIdentifier(), new JsonPrimitive(value.getValue()));
     }
 
@@ -172,6 +178,7 @@ public class Config {
             array.add(str);
         }
 
+        this.configJson.addProperty("_comment", value.getComment());
         this.configJson.add(value.getValueIdentifier(), array);
     }
 
