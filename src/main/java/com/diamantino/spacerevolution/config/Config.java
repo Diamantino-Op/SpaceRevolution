@@ -58,81 +58,81 @@ public class Config {
     }
 
     public void getIntValue(ConfigValue.IntValue value) {
-        JsonElement el = this.configJson.get(value.getValueIdentifier());
+        JsonObject el = this.configJson.getAsJsonObject(value.getValueName());
 
-        if (el == null || !el.isJsonPrimitive()) {
+        if (el == null || !el.isJsonObject()) {
             value.setValue(0);
 
             return;
         }
 
-        value.setValue(el.getAsJsonPrimitive().getAsInt());
+        value.setValue(el.get("value").getAsJsonPrimitive().getAsInt());
     }
 
     public void getLongValue(ConfigValue.LongValue value) {
-        JsonElement el = this.configJson.get(value.getValueIdentifier());
+        JsonObject el = this.configJson.getAsJsonObject(value.getValueName());
 
-        if (el == null || !el.isJsonPrimitive()) {
+        if (el == null || !el.isJsonObject()) {
             value.setValue(0);
 
             return;
         }
 
-        value.setValue(el.getAsJsonPrimitive().getAsLong());
+        value.setValue(el.get("value").getAsJsonPrimitive().getAsLong());
     }
 
     public void getFloatValue(ConfigValue.FloatValue value) {
-        JsonElement el = this.configJson.get(value.getValueIdentifier());
+        JsonObject el = this.configJson.getAsJsonObject(value.getValueName());
 
-        if (el == null || !el.isJsonPrimitive()) {
+        if (el == null || !el.isJsonObject()) {
             value.setValue(0);
 
             return;
         }
 
-        value.setValue(el.getAsJsonPrimitive().getAsFloat());
+        value.setValue(el.get("value").getAsJsonPrimitive().getAsFloat());
     }
 
     public void getDoubleValue(ConfigValue.DoubleValue value) {
-        JsonElement el = this.configJson.get(value.getValueIdentifier());
+        JsonObject el = this.configJson.getAsJsonObject(value.getValueName());
 
-        if (el == null || !el.isJsonPrimitive()) {
+        if (el == null || !el.isJsonObject()) {
             value.setValue(0);
 
             return;
         }
 
-        value.setValue(el.getAsJsonPrimitive().getAsDouble());
+        value.setValue(el.get("value").getAsJsonPrimitive().getAsDouble());
     }
 
     public void getBooleanValue(ConfigValue.BooleanValue value) {
-        JsonElement el = this.configJson.get(value.getValueIdentifier());
+        JsonObject el = this.configJson.getAsJsonObject(value.getValueName());
 
-        if (el == null || !el.isJsonPrimitive()) {
+        if (el == null || !el.isJsonObject()) {
             value.setValue(false);
 
             return;
         }
 
-        value.setValue(el.getAsJsonPrimitive().getAsBoolean());
+        value.setValue(el.get("value").getAsJsonPrimitive().getAsBoolean());
     }
 
     public void getStringValue(ConfigValue.StringValue value) {
-        JsonElement el = this.configJson.get(value.getValueIdentifier());
+        JsonObject el = this.configJson.getAsJsonObject(value.getValueName());
 
-        if (el == null || !el.isJsonPrimitive()) {
+        if (el == null || !el.isJsonObject()) {
             value.setValue("");
 
             return;
         }
 
-        value.setValue(el.getAsJsonPrimitive().getAsString());
+        value.setValue(el.get("value").getAsJsonPrimitive().getAsString());
     }
 
     public void getStringListValue(ConfigValue.StringListValue value) {
-        JsonElement el = this.configJson.get(value.getValueIdentifier());
+        JsonObject el = this.configJson.getAsJsonObject(value.getValueName());
 
-        if (el == null || !el.isJsonArray()) {
+        if (el == null || !el.isJsonObject()) {
             value.setValue(Collections.emptyList());
 
             return;
@@ -140,7 +140,7 @@ public class Config {
 
         List<String> list = new ArrayList<>();
 
-        for (JsonElement child : el.getAsJsonArray()) {
+        for (JsonElement child : el.get("value").getAsJsonArray()) {
             if (child.isJsonPrimitive()) {
                 list.add(child.getAsJsonPrimitive().getAsString());
             }
@@ -150,33 +150,58 @@ public class Config {
     }
 
     public void setIntValue(ConfigValue.IntValue value) {
-        this.configJson.addProperty("_comment", value.getComment());
-        this.configJson.add(value.getValueIdentifier(), new JsonPrimitive(value.getValue()));
+        JsonObject object = new JsonObject();
+
+        object.addProperty("comment", value.getComment());
+        object.add("value", new JsonPrimitive(value.getValue()));
+
+        this.configJson.add(value.getValueName(), object);
     }
 
     public void setLongValue(ConfigValue.LongValue value) {
-        this.configJson.addProperty("_comment", value.getComment());
-        this.configJson.add(value.getValueIdentifier(), new JsonPrimitive(value.getValue()));
+        JsonObject object = new JsonObject();
+
+        object.addProperty("comment", value.getComment());
+        object.add("value", new JsonPrimitive(value.getValue()));
+
+        this.configJson.add(value.getValueName(), object);
     }
 
     public void setFloatValue(ConfigValue.FloatValue value) {
-        this.configJson.addProperty("_comment", value.getComment());
-        this.configJson.add(value.getValueIdentifier(), new JsonPrimitive(value.getValue()));
+        JsonObject object = new JsonObject();
+
+        object.addProperty("comment", value.getComment());
+        object.add("value", new JsonPrimitive(value.getValue()));
+
+        this.configJson.add(value.getValueName(), object);
     }
 
     public void setDoubleValue(ConfigValue.DoubleValue value) {
-        this.configJson.addProperty("_comment", value.getComment());
-        this.configJson.add(value.getValueIdentifier(), new JsonPrimitive(value.getValue()));
+        JsonObject object = new JsonObject();
+
+        object.addProperty("comment", value.getComment());
+        object.add("value", new JsonPrimitive(value.getValue()));
+
+        this.configJson.add(value.getValueName(), object);
     }
 
     public void setBooleanValue(ConfigValue.BooleanValue value) {
-        this.configJson.addProperty("_comment", value.getComment());
-        this.configJson.add(value.getValueIdentifier(), new JsonPrimitive(value.getValue()));
+        JsonObject object = new JsonObject();
+
+        object.addProperty("comment", value.getComment());
+        object.add("value", new JsonPrimitive(value.getValue()));
+
+        this.configJson.add(value.getValueName(), object);
     }
 
     public void setStringValue(ConfigValue.StringValue value) {
-        this.configJson.addProperty("_comment", value.getComment());
-        this.configJson.add(value.getValueIdentifier(), new JsonPrimitive(value.getValue()));
+        JsonObject object = new JsonObject();
+
+        object.addProperty("comment", value.getComment());
+        object.add("value", new JsonPrimitive(value.getValue()));
+
+        this.configJson.addProperty("_comment_" + value.getValueIdentifier(), value.getComment());
+        this.configJson.add(value.getValueName(), object);
     }
 
     public void setStringListValue(ConfigValue.StringListValue value) {
@@ -186,8 +211,12 @@ public class Config {
             array.add(str);
         }
 
-        this.configJson.addProperty("_comment", value.getComment());
-        this.configJson.add(value.getValueIdentifier(), array);
+        JsonObject object = new JsonObject();
+
+        object.addProperty("comment", value.getComment());
+        object.add("value", array);
+
+        this.configJson.add(value.getValueName(), object);
     }
 
     public boolean containsValue(String name) {
