@@ -21,7 +21,7 @@ public abstract class ConfigValue {
         return valueIdentifier;
     }
 
-    public class IntValue extends ConfigValue {
+    public static class IntValue extends ConfigValue {
         private int value;
 
         public IntValue(String identifier, int value) {
@@ -39,7 +39,7 @@ public abstract class ConfigValue {
         }
     }
 
-    public class LongValue extends ConfigValue {
+    public static class LongValue extends ConfigValue {
         private long value;
 
         public LongValue(String identifier, long value) {
@@ -57,7 +57,7 @@ public abstract class ConfigValue {
         }
     }
 
-    public class FloatValue extends ConfigValue {
+    public static class FloatValue extends ConfigValue {
         private float value;
 
         public FloatValue(String identifier, float value) {
@@ -75,7 +75,7 @@ public abstract class ConfigValue {
         }
     }
 
-    public class DoubleValue extends ConfigValue {
+    public static class DoubleValue extends ConfigValue {
         private double value;
 
         public DoubleValue(String identifier, double value) {
@@ -93,7 +93,7 @@ public abstract class ConfigValue {
         }
     }
 
-    public class BooleanValue extends ConfigValue {
+    public static class BooleanValue extends ConfigValue {
         private boolean value;
 
         public BooleanValue(String identifier, boolean value) {
@@ -111,7 +111,7 @@ public abstract class ConfigValue {
         }
     }
 
-    public class StringValue extends ConfigValue {
+    public static class StringValue extends ConfigValue {
         private String value;
 
         public StringValue(String identifier, String value) {
@@ -129,7 +129,7 @@ public abstract class ConfigValue {
         }
     }
 
-    public class StringListValue extends ConfigValue {
+    public static class StringListValue extends ConfigValue {
         private List<String> value;
 
         public StringListValue(String identifier, List<String> value) {
