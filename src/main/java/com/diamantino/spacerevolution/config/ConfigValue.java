@@ -7,12 +7,10 @@ import java.util.List;
 public abstract class ConfigValue {
     private final String valueName;
     private final String valueIdentifier;
-    private final String commentIdentifier;
 
-    public ConfigValue(String identifier, String commentIdentifier) {
+    public ConfigValue(String identifier) {
         this.valueName = Text.translatable("config.spacerevolution." + identifier).toString();
         this.valueIdentifier = identifier;
-        this.commentIdentifier = commentIdentifier;
     }
 
     public String getValueName() {
@@ -24,14 +22,14 @@ public abstract class ConfigValue {
     }
 
     public String getComment() {
-        return Text.translatable("config.spacerevolution.comment." + commentIdentifier).toString();
+        return Text.translatable("config.spacerevolution.comment." + valueIdentifier).toString();
     }
 
     public static class IntValue extends ConfigValue {
         private int value;
 
-        public IntValue(String identifier, String commentIdentifier, int value) {
-            super(identifier, commentIdentifier);
+        public IntValue(String identifier, int value) {
+            super(identifier);
 
             this.value = value;
         }
@@ -48,8 +46,8 @@ public abstract class ConfigValue {
     public static class LongValue extends ConfigValue {
         private long value;
 
-        public LongValue(String identifier, String commentIdentifier, long value) {
-            super(identifier, commentIdentifier);
+        public LongValue(String identifier, long value) {
+            super(identifier);
 
             this.value = value;
         }
@@ -66,8 +64,8 @@ public abstract class ConfigValue {
     public static class FloatValue extends ConfigValue {
         private float value;
 
-        public FloatValue(String identifier, String commentIdentifier, float value) {
-            super(identifier, commentIdentifier);
+        public FloatValue(String identifier, float value) {
+            super(identifier);
 
             this.value = value;
         }
@@ -84,8 +82,8 @@ public abstract class ConfigValue {
     public static class DoubleValue extends ConfigValue {
         private double value;
 
-        public DoubleValue(String identifier, String commentIdentifier, double value) {
-            super(identifier, commentIdentifier);
+        public DoubleValue(String identifier, double value) {
+            super(identifier);
 
             this.value = value;
         }
@@ -102,8 +100,8 @@ public abstract class ConfigValue {
     public static class BooleanValue extends ConfigValue {
         private boolean value;
 
-        public BooleanValue(String identifier, String commentIdentifier, boolean value) {
-            super(identifier, commentIdentifier);
+        public BooleanValue(String identifier, boolean value) {
+            super(identifier);
 
             this.value = value;
         }
@@ -120,8 +118,8 @@ public abstract class ConfigValue {
     public static class StringValue extends ConfigValue {
         private String value;
 
-        public StringValue(String identifier, String commentIdentifier, String value) {
-            super(identifier, commentIdentifier);
+        public StringValue(String identifier, String value) {
+            super(identifier);
 
             this.value = value;
         }
@@ -138,8 +136,8 @@ public abstract class ConfigValue {
     public static class StringListValue extends ConfigValue {
         private List<String> value;
 
-        public StringListValue(String identifier, String commentIdentifier, List<String> value) {
-            super(identifier, commentIdentifier);
+        public StringListValue(String identifier, List<String> value) {
+            super(identifier);
 
             this.value = value;
         }
