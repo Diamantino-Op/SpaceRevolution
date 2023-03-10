@@ -20,6 +20,7 @@ public class SpaceRevolution implements ModInitializer {
     @Override
     public void onInitialize() {
         ModReferences.registerModReferences();
+        SpaceRevolutionCommonConfigs.initModConfigs();
         ModItemGroups.registerItemGroups();
         ModBlocks.registerModBlocks();
         ModBlockEntities.registerBlockEntities();
@@ -30,8 +31,6 @@ public class SpaceRevolution implements ModInitializer {
         ModParticleTypes.registerModParticleTypes();
         ModEntityTypes.registerModEntityTypes();
         ModDamageSources.registerModEntityTypes();
-        SpaceRevolutionCommonConfigs.initModConfigs();
-        //TODO: Add asteroid entities that when hit the ground, they spawn a crater with the roid at the center
         //TODO: Remove snow from planets that don't have precipitations
 
         onRegisterReloadListeners((id, listener) -> ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new IdentifiableResourceReloadListener() {

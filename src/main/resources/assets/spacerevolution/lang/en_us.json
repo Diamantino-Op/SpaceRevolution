@@ -17,5 +17,10 @@
   "spacerevolution.tooltip.liquid.amount.with.capacity": "%s / %s mB",
   "spacerevolution.tooltip.liquid.amount": "%s mB",
 
-  "warnings.spacerevolution.asteroid_incoming": "§cAn asteroid is coming in less than 5 minutes!"
+  "warnings.spacerevolution.asteroid_incoming": "§cAn asteroid is coming in less than 5 minutes!",
+
+  "config.spacerevolution.orbit_level_gravity": "Orbit World Gravity",
+  "config.spacerevolution.comment.orbit_level_gravity": "The gravity of the various orbit dimensions.",
+  "config.spacerevolution.atmosphere_leave_level": "Atmosphere Leave Height",
+  "config.spacerevolution.comment.atmosphere_leave_level": "The height at which you leave the atmosphere and enter space."
 }

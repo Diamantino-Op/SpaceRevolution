@@ -7,10 +7,12 @@ import java.util.List;
 public abstract class ConfigValue {
     private final String valueName;
     private final String valueIdentifier;
+    private final String defaultTranslation;
 
-    public ConfigValue(String identifier) {
-        this.valueName = Text.translatable("config.spacerevolution." + identifier).toString();
+    public ConfigValue(String identifier, String defaultTranslation) {
+        this.valueName = Text.translatable("config.spacerevolution." + identifier).getString();
         this.valueIdentifier = identifier;
+        this.defaultTranslation = defaultTranslation;
     }
 
     public String getValueName() {
@@ -22,14 +24,19 @@ public abstract class ConfigValue {
     }
 
     public String getComment() {
-        return Text.translatable("config.spacerevolution.comment." + valueIdentifier).toString();
+        String translatedComment = Text.translatable("config.spacerevolution.comment." + valueIdentifier).getString();
+
+        if (!translatedComment.contains("config.spacerevolution.comment."))
+            return translatedComment;
+
+        return defaultTranslation;
     }
 
     public static class IntValue extends ConfigValue {
         private int value;
 
-        public IntValue(String identifier, int value) {
-            super(identifier);
+        public IntValue(String identifier, String defaultTranslation, int value) {
+            super(identifier, defaultTranslation);
 
             this.value = value;
         }
@@ -46,8 +53,8 @@ public abstract class ConfigValue {
     public static class LongValue extends ConfigValue {
         private long value;
 
-        public LongValue(String identifier, long value) {
-            super(identifier);
+        public LongValue(String identifier, String defaultTranslation, long value) {
+            super(identifier, defaultTranslation);
 
             this.value = value;
         }
@@ -64,8 +71,8 @@ public abstract class ConfigValue {
     public static class FloatValue extends ConfigValue {
         private float value;
 
-        public FloatValue(String identifier, float value) {
-            super(identifier);
+        public FloatValue(String identifier, String defaultTranslation, float value) {
+            super(identifier, defaultTranslation);
 
             this.value = value;
         }
@@ -82,8 +89,8 @@ public abstract class ConfigValue {
     public static class DoubleValue extends ConfigValue {
         private double value;
 
-        public DoubleValue(String identifier, double value) {
-            super(identifier);
+        public DoubleValue(String identifier, String defaultTranslation, double value) {
+            super(identifier, defaultTranslation);
 
             this.value = value;
         }
@@ -100,8 +107,8 @@ public abstract class ConfigValue {
     public static class BooleanValue extends ConfigValue {
         private boolean value;
 
-        public BooleanValue(String identifier, boolean value) {
-            super(identifier);
+        public BooleanValue(String identifier, String defaultTranslation, boolean value) {
+            super(identifier, defaultTranslation);
 
             this.value = value;
         }
@@ -118,8 +125,8 @@ public abstract class ConfigValue {
     public static class StringValue extends ConfigValue {
         private String value;
 
-        public StringValue(String identifier, String value) {
-            super(identifier);
+        public StringValue(String identifier, String defaultTranslation, String value) {
+            super(identifier, defaultTranslation);
 
             this.value = value;
         }
@@ -136,8 +143,8 @@ public abstract class ConfigValue {
     public static class StringListValue extends ConfigValue {
         private List<String> value;
 
-        public StringListValue(String identifier, List<String> value) {
-            super(identifier);
+        public StringListValue(String identifier, String defaultTranslation, List<String> value) {
+            super(identifier, defaultTranslation);
 
             this.value = value;
         }
