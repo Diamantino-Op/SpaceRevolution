@@ -28,9 +28,4 @@ public class SpaceRevolutionCommonConfigs {
             config.saveConfigFile();
         }
     }
-
-    public static void saveConfigs() {
-        if (!config.configFileExists())
-            config.saveConfigFile();
-    }
 }
