@@ -1,5 +1,6 @@
 package com.diamantino.spacerevolution.mixin;
 
+import com.diamantino.spacerevolution.config.ModCommonConfigs;
 import com.diamantino.spacerevolution.data.AsteroidCountdownData;
 import com.diamantino.spacerevolution.entities.AsteroidEntity;
 import com.diamantino.spacerevolution.initialization.ModReferences;
@@ -119,6 +120,6 @@ public abstract class ServerWorldMixin {
         Random rand = Random.create(getSeed());
 
         //TODO: Maybe add this to config
-        return rand.nextBetween(12000, 36000);
+        return rand.nextBetween(ModCommonConfigs.minAsteroidSpawnTime.getValue(), ModCommonConfigs.maxAsteroidSpawnTime.getValue());
     }
 }

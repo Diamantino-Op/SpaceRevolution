@@ -1,6 +1,6 @@
 package com.diamantino.spacerevolution;
 
-import com.diamantino.spacerevolution.config.SpaceRevolutionCommonConfigs;
+import com.diamantino.spacerevolution.config.ModCommonConfigs;
 import com.diamantino.spacerevolution.data.PlanetData;
 import com.diamantino.spacerevolution.initialization.*;
 import net.fabricmc.api.ModInitializer;
@@ -20,7 +20,7 @@ public class SpaceRevolution implements ModInitializer {
     @Override
     public void onInitialize() {
         ModReferences.registerModReferences();
-        SpaceRevolutionCommonConfigs.initModConfigs();
+        ModCommonConfigs.initModConfigs();
         ModItemGroups.registerItemGroups();
         ModBlocks.registerModBlocks();
         ModBlockEntities.registerBlockEntities();

@@ -1,13 +1,16 @@
 package com.diamantino.spacerevolution.utils;
 
+import com.diamantino.spacerevolution.config.ModCommonConfigs;
 import com.diamantino.spacerevolution.data.Planet;
 import com.diamantino.spacerevolution.data.PlanetData;
+import com.diamantino.spacerevolution.entities.BlockyVehicleEntity;
+import com.diamantino.spacerevolution.entities.LanderEntity;
+import com.diamantino.spacerevolution.entities.RocketEntity;
 import com.diamantino.spacerevolution.initialization.ModReferences;
 import com.mojang.serialization.Codec;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
@@ -27,13 +30,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionTypes;
 
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Locale;
 import java.util.Set;
-import java.util.stream.StreamSupport;
 
 // CREDIT: https://github.com/terrarium-earth/Ad-Astra
 public class ModUtils {
@@ -60,20 +61,20 @@ public class ModUtils {
             if (level == null) return;
             Set<Entity> entitiesToTeleport = new LinkedHashSet<>();
 
-            //Vec3d targetPos = new Vec3d(entity.getX(), VehiclesConfig.RocketConfig.atmosphereLeave, entity.getZ());
+            Vec3d targetPos = new Vec3d(entity.getX(), ModCommonConfigs.atmosphereLeaveLevel.getValue(), entity.getZ());
 
             if (entity instanceof ServerPlayerEntity player) {
-                /*if (player.getVehicle() instanceof Rocket rocket) {
-                    rocket.ejectPassengers();
+                if (player.getVehicle() instanceof RocketEntity rocket) {
+                    rocket.removeAllPassengers();
                     player.sendMessageToClient(Text.translatable("message." + ModReferences.modId + ".hold_space"), false);
                     entity = createLander(rocket, level, targetPos);
                     rocket.discard();
                     entitiesToTeleport.add(entity);
                     entitiesToTeleport.add(player);
 
-                } else if (!(player.getVehicle() != null && player.getVehicle().getPassengers().size() > 0)) {
+                } else if (!(player.getVehicle() != null && player.getVehicle().getPassengerList().size() > 0)) {
                     entitiesToTeleport.add(entity);
-                }*/
+                }
             } else {
                 entitiesToTeleport.add(entity);
             }
@@ -82,39 +83,39 @@ public class ModUtils {
                 cookFood(itemEntity);
             }
 
-            //entitiesToTeleport.addAll(entity.getPassengers());
+            entitiesToTeleport.addAll(entity.getPassengerList());
 
             for (Entity entityToTeleport : entitiesToTeleport) {
                 if (entityToTeleport instanceof ServerPlayerEntity) {
-                    //ChunkPos chunkPos = new ChunkPos(new BlockPos(targetPos.x(), targetPos.y(), targetPos.z()));
-                    //level.getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, chunkPos, 1, entityToTeleport.getId());
+                    ChunkPos chunkPos = new ChunkPos(new BlockPos(targetPos.getX(), targetPos.getY(), targetPos.getZ()));
+                    level.getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, chunkPos, 1, entityToTeleport.getId());
                     break;
                 }
             }
 
             LinkedList<Entity> teleportedEntities = new LinkedList<>();
-            /*for (Entity entityToTeleport : entitiesToTeleport) {
-                PortalInfo target = new PortalInfo(targetPos, entityToTeleport.getDeltaMovement(), entityToTeleport.getYRot(), entityToTeleport.getXRot());
+            for (Entity entityToTeleport : entitiesToTeleport) {
+                PortalInfo target = new PortalInfo(targetPos, entityToTeleport.getVelocity(), entityToTeleport.getYaw(), entityToTeleport.getPitch());
                 teleportedEntities.add(PlatformUtils.teleportToDimension(entityToTeleport, level, target));
-            }*/
+            }
 
             Entity first = teleportedEntities.poll();
 
             // Move the lander to the closest land
-            /*if (first instanceof Lander) {
-                Vec3 nearestLand = LandFinder.findNearestLand(first.getLevel(), new Vec3(first.getX(), VehiclesConfig.RocketConfig.atmosphereLeave, first.getZ()), 70);
-                first.moveTo(nearestLand.x(), nearestLand.y(), nearestLand.z(), first.getYRot(), first.getXRot());
+            if (first instanceof LanderEntity) {
+                Vec3d nearestLand = LandFinder.findNearestLand(first.getWorld(), new Vec3d(first.getX(), ModCommonConfigs.atmosphereLeaveLevel.getValue(), first.getZ()), 70);
+                first.refreshPositionAndAngles(nearestLand.getX(), nearestLand.getY(), nearestLand.getZ(), first.getYaw(), first.getPitch());
             }
 
             for (Entity teleportedEntity : teleportedEntities) {
-                if (first instanceof Lander) {
-                    Vec3 nearestLand = LandFinder.findNearestLand(teleportedEntity.getLevel(), new Vec3(teleportedEntity.getX(), VehiclesConfig.RocketConfig.atmosphereLeave, teleportedEntity.getZ()), 70);
-                    teleportedEntity.moveTo(nearestLand.x(), nearestLand.y(), nearestLand.z(), teleportedEntity.getYRot(), teleportedEntity.getXRot());
+                if (first instanceof LanderEntity) {
+                    Vec3d nearestLand = LandFinder.findNearestLand(teleportedEntity.getWorld(), new Vec3d(teleportedEntity.getX(), ModCommonConfigs.atmosphereLeaveLevel.getValue(), teleportedEntity.getZ()), 70);
+                    teleportedEntity.refreshPositionAndAngles(nearestLand.getX(), nearestLand.getY(), nearestLand.getZ(), teleportedEntity.getYaw(), teleportedEntity.getPitch());
                 }
                 if (teleportedEntity != null) {
                     teleportedEntity.startRiding(first, true);
                 }
-            }*/
+            }
         }
     }
 
@@ -135,23 +136,21 @@ public class ModUtils {
      * @param target      The position to spawn the lander at
      * @return A spawned lander entity at the same position as the rocket and with the same inventory
      */
-    /*public static Lander createLander(Rocket rocket, ServerLevel targetWorld, Vec3 target) {
-        Lander lander = new Lander(ModEntityTypes.LANDER.get(), targetWorld);
-        lander.setPos(target);
+    public static LanderEntity createLander(RocketEntity rocket, ServerWorld targetWorld, Vec3d target) {
+        LanderEntity lander = new LanderEntity(ModEntityTypes.LANDER.get(), targetWorld);
+        lander.setPos(target.getX(), target.getY(), target.getZ());
 
-        for (int i = 0; i < rocket.getInventorySize(); i++) {
+        /*for (int i = 0; i < rocket.getInventorySize(); i++) {
             lander.getInventory().setItem(i, rocket.getInventory().getItem(i));
         }
         ItemStackHolder stack = new ItemStackHolder(rocket.getDropStack());
         ((VehicleItem) stack.getStack().getItem()).insert(stack, rocket.getTankHolder());
-        lander.getInventory().setItem(10, stack.getStack());
+        lander.getInventory().setItem(10, stack.getStack());*/
 
-        // On Fabric, this is required for some reason as it does not teleport the entity.
-        if (ArchitecturyTarget.getCurrentTarget().equals("fabric")) {
-            targetWorld.addFreshEntity(lander);
-        }
+        targetWorld.spawnEntity(lander);
+
         return lander;
-    }*/
+    }
 
     /**
      * Gets the cooked variant of a raw food, if it exists, and then spawns the item entity. The cooked variant is obtained by using a smoking recipe, and then obtaining the result of that recipe.
@@ -235,8 +234,7 @@ public class ModUtils {
      * Check if the level is labeled as a planet dimension.
      */
     public static boolean isPlanet(World level) {
-        //TODO: Fix
-        if (/*AdAstraConfig.avoidOverworldChecks && */DimensionTypes.OVERWORLD.equals(level.getRegistryKey())) {
+        if (World.OVERWORLD.equals(level.getRegistryKey())) {
             return false;
         }
         return PlanetData.isPlanetLevel(level);
@@ -252,11 +250,11 @@ public class ModUtils {
     /**
      * Spawns a server-side particle that renders regardless of the distance away from the player. This is important as normal particles are only rendered at up to 32 blocks away.
      */
-    /*public static <T extends ParticleOptions> void spawnForcedParticles(ServerWorld level, T particle, double x, double y, double z, int count, double deltaX, double deltaY, double deltaZ, double speed) {
+    public static <T extends ParticleOptions> void spawnForcedParticles(ServerWorld level, T particle, double x, double y, double z, int count, double deltaX, double deltaY, double deltaZ, double speed) {
         for (ServerPlayerEntity player : level.getPlayers()) {
             level.spawnParticles(player, particle, true, x, y, z, count, deltaX, deltaY, deltaZ, speed);
         }
-    }*/
+    }
 
     /**
      * Rotates the vehicle yaw without causing any stuttering effect or visual glitches.
@@ -264,11 +262,11 @@ public class ModUtils {
      * @param vehicle The vehicle to apply the rotation
      * @param newYaw  The new yaw to apply to the vehicle
      */
-    /*public static void rotateVehicleYaw(Vehicle vehicle, float newYaw) {
-        vehicle.setYRot(newYaw);
-        vehicle.setYBodyRot(newYaw);
-        vehicle.yRotO = newYaw;
-    }*/
+    public static void rotateVehicleYaw(BlockyVehicleEntity vehicle, float newYaw) {
+        vehicle.setYaw(newYaw);
+        vehicle.setBodyYaw(newYaw);
+        vehicle.prevYaw = newYaw;
+    }
 
     public static boolean checkTag(Entity entity, TagKey<EntityType<?>> tag) {
         return entity.getType().isIn(tag);
@@ -290,15 +288,15 @@ public class ModUtils {
         return StreamSupport.stream(entity.getArmorItems().spliterator(), false).allMatch(s -> s.isIn(ModTags.OXYGENATED_ARMOR));
     }*/
 
-    /*public static long getSolarEnergy(World level) {
+    public static long getSolarEnergy(World level) {
         if (isOrbitlevel(level)) {
-            return PlanetData.getPlanetFromOrbit(level.getDimension()).map(Planet::orbitSolarPower).orElse(15L);
+            return PlanetData.getPlanetFromOrbit(level.getRegistryKey()).map(Planet::orbitSolarPower).orElse(15L);
         } else if (isPlanet(level)) {
-            return PlanetData.getPlanetFromLevel(level.getDimension()).map(Planet::solarPower).orElse(15L);
+            return PlanetData.getPlanetFromLevel(level.getRegistryKey()).map(Planet::solarPower).orElse(15L);
         } else {
             return 15L;
         }
-    }*/
+    }
 
     public static <T extends Enum<T>> Codec<T> createEnumCodec(Class<T> enumClass) {
         return Codec.STRING.xmap(s -> Enum.valueOf(enumClass, s.toUpperCase(Locale.ROOT)), Enum::name);

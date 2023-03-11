@@ -22,5 +22,15 @@
   "config.spacerevolution.orbit_level_gravity": "Orbit World Gravity",
   "config.spacerevolution.comment.orbit_level_gravity": "The gravity of the various orbit dimensions.",
   "config.spacerevolution.atmosphere_leave_level": "Atmosphere Leave Height",
-  "config.spacerevolution.comment.atmosphere_leave_level": "The height at which you leave the atmosphere and enter space."
+  "config.spacerevolution.comment.atmosphere_leave_level": "The height at which you leave the atmosphere and enter space.",
+  "config.spacerevolution.min_asteroid_spawn_time": "Min Asteroid Spawn Time",
+  "config.spacerevolution.comment.min_asteroid_spawn_time": "The minimum delay (in ticks) after an asteroid will spawn.",
+  "config.spacerevolution.max_asteroid_spawn_time": "Max Asteroid Spawn Time",
+  "config.spacerevolution.comment.max_asteroid_spawn_time": "The maximum delay (in ticks) after an asteroid will spawn.",
+  "config.spacerevolution.explosionSpeedThreshold": "Explosion Speed Threshold",
+  "config.spacerevolution.comment.explosionSpeedThreshold": "The velocity to trigger a vehicle explosion while falling.",
+  "config.spacerevolution.vehicleExplosionMultiplier": "Vehicle Explosion Multiplier",
+  "config.spacerevolution.comment.vehicleExplosionMultiplier": "How much the explosion should be multiplied by when the vehicle has fallen.",
+  "config.spacerevolution.vehicleGravity": "Vehicle Gravity",
+  "config.spacerevolution.comment.vehicleGravity": "The gravity of vehicles."
 }
