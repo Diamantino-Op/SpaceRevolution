@@ -20,8 +20,36 @@ public class StructureStorage {
 
     private final World world;
 
-    public StructureStorage(World world) {
+    private final int sizeX;
+    private final int sizeY;
+    private final int sizeZ;
+
+    public StructureStorage(World world, BlockPos startPos, BlockPos endPos) {
         this.world = world;
+
+        this.sizeX = Math.abs(endPos.getX() - startPos.getX());
+        this.sizeY = Math.abs(endPos.getY() - startPos.getY());
+        this.sizeZ = Math.abs(endPos.getZ() - startPos.getZ());
+    }
+
+    public int getSizeX() {
+        return sizeX;
+    }
+
+    public int getSizeY() {
+        return sizeY;
+    }
+
+    public int getSizeZ() {
+        return sizeZ;
+    }
+
+    public BlockState getBlockState(BlockPos pos) {
+        return blocks.getOrDefault(pos, Blocks.AIR.getDefaultState());
+    }
+
+    public NbtCompound getBlockEntityNbt(BlockPos pos) {
+        return blockEntityNbts.getOrDefault(pos, new NbtCompound());
     }
 
     public void saveData(NbtCompound nbt) {
@@ -86,10 +114,6 @@ public class StructureStorage {
     }
 
     public void loadBlocks(BlockPos startPos, BlockPos endPos) {
-        int sizeX = Math.abs(endPos.getX() - startPos.getX());
-        int sizeY = Math.abs(endPos.getY() - startPos.getY());
-        int sizeZ = Math.abs(endPos.getZ() - startPos.getZ());
-
         for (int x = 0; x <= sizeX; x++) {
             for (int y = 0; y <= sizeY; y++) {
                 for (int z = 0; z <= sizeZ; z++) {
@@ -112,10 +136,6 @@ public class StructureStorage {
     }
 
     public void saveBlocks(BlockPos startPos, BlockPos endPos) {
-        int sizeX = Math.abs(endPos.getX() - startPos.getX());
-        int sizeY = Math.abs(endPos.getY() - startPos.getY());
-        int sizeZ = Math.abs(endPos.getZ() - startPos.getZ());
-
         for (int x = 0; x <= sizeX; x++) {
             for (int y = 0; y <= sizeY; y++) {
                 for (int z = 0; z <= sizeZ; z++) {
@@ -129,7 +149,7 @@ public class StructureStorage {
                         blocks.put(localPos, state);
 
                         if (entity != null) {
-                            blockEntityNbts.put(localPos, entity.createNbt());
+                            blockEntityNbts.put(localPos, entity.createNbtWithId());
                         }
 
                         world.setBlockState(pos, Blocks.AIR.getDefaultState());

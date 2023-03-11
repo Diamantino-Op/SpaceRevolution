@@ -11,8 +11,10 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -33,15 +35,41 @@ public abstract class BlockyVehicleEntity extends Entity {
 
     private final StructureStorage structureStorage;
 
-    public BlockyVehicleEntity(EntityType<?> type, World world) {
+    private Vec3d displacementFromEntity;
+
+    public BlockyVehicleEntity(EntityType<?> type, World world, BlockPos startPos, BlockPos endPos) {
         super(type, world);
 
-        this.structureStorage = new StructureStorage(world);
+        this.structureStorage = new StructureStorage(world, startPos, endPos);
+
+        int dispX = Math.abs(this.getBlockPos().getX() - startPos.getX());
+        int dispY = Math.abs(this.getBlockPos().getY() - startPos.getY());
+        int dispZ = Math.abs(this.getBlockPos().getZ() - startPos.getZ());
+
+        this.displacementFromEntity = new Vec3d(dispX, dispY, dispZ);
     }
 
     @Override
     protected void initDataTracker() {
         this.dataTracker.startTracking(SPEED, 0.0f);
+    }
+
+    @Override
+    protected void readCustomDataFromNbt(NbtCompound nbt) {
+        NbtCompound tag = new NbtCompound();
+
+        structureStorage.saveData(tag);
+
+        nbt.put("structure_storage", tag);
+    }
+
+    @Override
+    protected void writeCustomDataToNbt(NbtCompound nbt) {
+        structureStorage.loadData(nbt.getCompound("structure_storage"));
+    }
+
+    public StructureStorage getStructureStorage() {
+        return structureStorage;
     }
 
     private void updatePositionAndRotation() {
